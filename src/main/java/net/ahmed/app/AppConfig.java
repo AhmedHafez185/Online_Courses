@@ -16,7 +16,7 @@ import org.springframework.context.annotation.PropertySource;
  * @author Ahmed Hafez
  */
 @Configuration
-@ComponentScan(basePackages = { "net.ahmed.app" }, excludeFilters = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class) })
+@ComponentScan("net.ahmed.app")
 @PropertySource("classpath:application.properties")
 public class AppConfig {
     
