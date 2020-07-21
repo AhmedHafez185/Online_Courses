@@ -7,20 +7,13 @@ package net.ahmed.app.dal.repository.impl;
 
 import java.util.Locale;
 import net.ahmed.app.AppConfig;
-import net.ahmed.app.bll.service.CategoryService;
-import net.ahmed.app.dal.entity.Category;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -31,12 +24,18 @@ import org.springframework.transaction.annotation.Transactional;
 @WebAppConfiguration
 public class CategoryRepoTest {
     @Autowired
-    CategoryService categoryService;
+   // CategoryService categoryService;
     public CategoryRepoTest() {
     }
     @Test
+    @Ignore
     public void addCategory() {
-       categoryService.addCategory();
+       //categoryService.addCategory();
+    }
+    
+    @Test
+    public void findAll() {
+       //categoryService.findAll();
     }
     
 }
