@@ -65,7 +65,7 @@
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
                                     <a href="#0" class="wish_bt"></a>
-                                    <a href="views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_1.jpg" class="img-fluid" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_1.jpg" class="img-fluid" alt=""></a>
                                     <div class="price">$54</div>
                                     <div class="preview"><span>Preview course</span></div>
                                 </figure>
@@ -78,7 +78,7 @@
                                 <ul>
                                     <li><i class="icon_clock_alt"></i> 1h 30min</li>
                                     <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="views/course-details.jsp">Enroll now</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
                                     <a href="#0" class="wish_bt"></a>
-                                    <a href="views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_2.jpg" class="img-fluid" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_2.jpg" class="img-fluid" alt=""></a>
                                     <div class="price">$45</div>
                                     <div class="preview"><span>Preview course</span></div>
                                 </figure>
@@ -101,7 +101,7 @@
                                 <ul>
                                     <li><i class="icon_clock_alt"></i> 1h 30min</li>
                                     <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="views/course-details.jsp">Enroll now</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
                                     <a href="#0" class="wish_bt"></a>
-                                    <a href="views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_3.jpg" class="img-fluid" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_3.jpg" class="img-fluid" alt=""></a>
                                     <div class="price">$39</div>
                                     <div class="preview"><span>Preview course</span></div>
                                 </figure>
@@ -124,7 +124,7 @@
                                 <ul>
                                     <li><i class="icon_clock_alt"></i> 1h 30min</li>
                                     <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="views/course-details.jsp">Enroll now</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
                                     <a href="#0" class="wish_bt"></a>
-                                    <a href="views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_4.jpg" class="img-fluid" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_4.jpg" class="img-fluid" alt=""></a>
                                     <div class="price">$60</div>
                                     <div class="preview"><span>Preview course</span></div>
                                 </figure>
@@ -147,7 +147,7 @@
                                 <ul>
                                     <li><i class="icon_clock_alt"></i> 1h 30min</li>
                                     <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="views/course-details.jsp">Enroll now</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -157,7 +157,7 @@
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
                                     <a href="#0" class="wish_bt"></a>
-                                    <a href="views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_5.jpg" class="img-fluid" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_5.jpg" class="img-fluid" alt=""></a>
                                     <div class="price">$45</div>
                                     <div class="preview"><span>Preview course</span></div>
                                 </figure>
@@ -170,7 +170,7 @@
                                 <ul>
                                     <li><i class="icon_clock_alt"></i> 1h 30min</li>
                                     <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="views/course-details.jsp">Enroll now</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
                                     <a href="#0" class="wish_bt"></a>
-                                    <a href="views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_6.jpg" class="img-fluid" alt=""></a>
+                                    <a href="${pageContext.request.contextPath}/views/course-details.jsp"><img src="http://via.placeholder.com/800x533/ccc/fff/course__list_6.jpg" class="img-fluid" alt=""></a>
                                     <div class="price">$39</div>
                                     <div class="preview"><span>Preview course</span></div>
                                 </figure>
@@ -193,7 +193,7 @@
                                 <ul>
                                     <li><i class="icon_clock_alt"></i> 1h 30min</li>
                                     <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="views/course-details.jsp">Enroll now</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
                                 </ul>
                             </div>
                             <!-- /box_grid -->
