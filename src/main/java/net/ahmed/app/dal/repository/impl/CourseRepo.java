@@ -7,11 +7,13 @@ package net.ahmed.app.dal.repository.impl;
 
 import net.ahmed.app.dal.entity.Course;
 import net.ahmed.app.dal.repository.AbstractRepo;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Ahmed Hafez
  */
+@Repository
 public class CourseRepo extends AbstractRepo<Course>{
     
     public CourseRepo() {

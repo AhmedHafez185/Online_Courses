@@ -7,11 +7,13 @@ package net.ahmed.app.dal.repository.impl;
 
 import net.ahmed.app.dal.entity.InstructorField;
 import net.ahmed.app.dal.repository.AbstractRepo;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Ahmed Hafez
  */
+@Repository
 public class InstructorFieldsRepo extends AbstractRepo<InstructorField>{
     public InstructorFieldsRepo() {
         super(InstructorField.class);

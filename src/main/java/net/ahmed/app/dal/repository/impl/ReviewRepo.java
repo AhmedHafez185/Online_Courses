@@ -7,11 +7,13 @@ package net.ahmed.app.dal.repository.impl;
 
 import net.ahmed.app.dal.entity.Review;
 import net.ahmed.app.dal.repository.AbstractRepo;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Ahmed Hafez
  */
+@Repository
 public class ReviewRepo extends AbstractRepo<Review>{
     
     public ReviewRepo() {
