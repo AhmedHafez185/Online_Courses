@@ -2,7 +2,7 @@
     <div class="container margin_120_95">
         <div class="row">
             <div class="col-lg-5 col-md-12 p-r-5">
-                <p><img src="img/logo.png" width="149" height="42" data-retina="true" alt=""></p>
+                <p><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="149" height="42" data-retina="true" alt=""></p>
                 <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
                 <div class="follow_us">
                     <ul>
@@ -54,7 +54,7 @@
                 </ul>
             </div>
             <div class="col-md-4">
-                <div id="copy">© 2017 Udema</div>
+                <div id="copy">© 2020 Ahmed Hafez</div>
             </div>
         </div>
     </div>

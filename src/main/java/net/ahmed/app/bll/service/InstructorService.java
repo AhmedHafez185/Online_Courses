@@ -18,4 +18,5 @@ public interface InstructorService {
     public Instructor editInstructor(Instructor instructor)throws Exception;
     public void removeInstructor(int instructorId)throws Exception;
     public Instructor getInstructor(Integer id)throws Exception;
+    public boolean checkEmail(String email)throws Exception;
 }

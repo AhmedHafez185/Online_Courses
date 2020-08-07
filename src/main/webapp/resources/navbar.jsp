@@ -40,7 +40,7 @@
             <li><span><a href="#0">Teach With Us</a></span>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/views/teacher-profile.jsp">Teacher Profile</a></li>
-                    <li><a href="${pageContext.request.contextPath}/views/instructor-register.jsp">Register</a></li>
+                    <li><a href="${pageContext.request.contextPath}/instructor/register">Register</a></li>
                 </ul>
             </li>
             <li><span><a href="${pageContext.request.contextPath}/views/student-profile.jsp">My Profile</a></span></li>

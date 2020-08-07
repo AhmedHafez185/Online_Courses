@@ -4,6 +4,8 @@ package net.ahmed.app.dal.entity;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -68,7 +70,7 @@ public class InstructorField  implements java.io.Serializable {
         this.name = name;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="instructorField")
+@OneToMany(fetch=FetchType.LAZY, mappedBy="instructorField",cascade=CascadeType.MERGE)
     public Set<Instructor> getInstructors() {
         return this.instructors;
     }

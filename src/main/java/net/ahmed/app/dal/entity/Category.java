@@ -19,9 +19,11 @@ import javax.persistence.Table;
 @Entity(name="category")
 public class Category  implements java.io.Serializable {
 
-
+	
      private int id;
      private String name;
+     private String picture;
+     private String description;
      private Set<Course> courses = new HashSet<Course>(0);
 
     public Category() {
@@ -73,7 +75,27 @@ public class Category  implements java.io.Serializable {
         this.courses = courses;
     }
 
+    @Column(name="picture")
+	public String getPicture() {
+		return picture;
+	}
 
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	@Column(name="description")
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+    
 
 
 }

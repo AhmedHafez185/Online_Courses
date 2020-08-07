@@ -5,11 +5,16 @@
  */
 package net.ahmed.app;
 
+import java.util.Locale;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -30,9 +35,15 @@ public class WebConfig implements WebMvcConfigurer {
     public ViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
         bean.setViewClass(JstlView.class);
-        bean.setPrefix("views/");
+        bean.setPrefix("/views/");
         bean.setSuffix(".jsp");
         return bean;
     }
+    @Bean
+	public ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
+		rb.setBasenames("validation");
+		return rb;
+	}
 
 }

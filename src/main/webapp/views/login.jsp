@@ -4,52 +4,81 @@
     Author     : Ahmed Hafez
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%@ include file="/resources/header.jsp" %>
-    </head>
-    <body id="login_bg">
-        <nav id="menu" class="fake_menu"></nav>
-        <div id="preloader">
-            <div data-loader="circle-side"></div>
-        </div>
-        <!-- End Preload -->
-        <div id="login">
-            <aside>
-                <figure>
-                    <a href="index.html"><img src="resources/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
-                </figure>
-                <form>
-                    <div class="access_social">
-                        <a href="#0" class="social_bt facebook">Login with Facebook</a>
-                        <a href="#0" class="social_bt google">Login with Google</a>
-                        <a href="#0" class="social_bt linkedin">Login with Linkedin</a>
-                    </div>
-                    <div class="divider"><span>Or</span></div>
-                    <div class="form-group">
-                        <span class="input">
-                            <input class="input_field" type="email" autocomplete="off" name="email">
-                            <label class="input_label">
-                                <span class="input__label-content">Your email</span>
-                            </label>
-                        </span>
 
-                        <span class="input">
-                            <input class="input_field" type="password"  name="password">
-                            <label class="input_label">
-                                <span class="input__label-content">Your password</span>
-                            </label>
-                        </span>
-                        <small><a href="#0">Forgot password?</a></small>
-                    </div>
-                    <a href="#0" class="btn_1 rounded full-width add_top_60">Login to Udema</a>
-                    <div class="text-center add_top_10">New to Udema? <strong><a href="register.html">Sign up!</a></strong></div>
-                </form>
-                <div class="copy">© 2017 Udema</div>
-            </aside>
-        </div>
-        <!-- /login -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description"
+	content="Udema a modern educational site template">
+<meta name="author" content="Ansonika">
+<title>Login</title>
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+<script
+	src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.1.3/dist/bootstrap-validate.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/edited-style.css"
+	rel="stylesheet" />
+</head>
+    <body id="login_bg">
+    	<div class="container">
+		<form:form class="well form-horizontal" modelAttribute="instructor" 
+			action="${pageContext.request.contextPath}/instructor/registerProcess " method="post" id="contact_form">
+			<fieldset>
+				<h2 class="register-panel">
+					<b>Login Form</b>
+				</h2>			
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">E Mail</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-envelope"></i></span>
+							<form:input path="email" name="email" placeholder="Email" class="form-control" type="email"  />
+						</div>
+						<form:errors path="email" cssStyle="color:#ff0000"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">Password</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+							<form:input name="password" path="password" placeholder="Password" class="form-control" type="password"  />	
+						</div>
+						<form:errors path="password" cssStyle="color:#ff0000"/>
+					</div>
+				</div>	
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label"></label>
+					<div class="col-lg-6 col-md-6">
+						<button type="submit" class="btn btn-success">
+							SUBMIT <span class="glyphicon glyphicon-send"></span>
+						</button>
+					</div>
+				</div>
+
+			</fieldset>
+		</form:form>
+       <div class="text-center add_top_10">New to Udema? <strong><a href="${pageContext.request.contextPath}/instructor/instructor_register">Sign up!</a></strong></div>
+	</div>
     </body>
 </html>

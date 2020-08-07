@@ -5,11 +5,17 @@
  */
 package net.ahmed.app.controller;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.ahmed.app.bll.service.LookupsService;
+import net.ahmed.app.dal.entity.Category;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -17,14 +23,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class HomeController {
-  
 
-@GetMapping
-   public static String home(){
-       return "index";
-   }
-  @RequestMapping(value = "/index", method = RequestMethod.GET)
-   public String index() {
-      return "index";
-   }
+    @Autowired
+    LookupsService categoryService;
+
+    @GetMapping
+    public ModelAndView home() {
+        List<Category> categories = getCategoroies();
+        ModelAndView model = new ModelAndView("index");
+        model.addObject("categories", categories);
+        return model;
+    }
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public ModelAndView index() {
+        List<Category> categories = getCategoroies();
+        ModelAndView model = new ModelAndView("index");
+        model.addObject("categories", categories);
+        return model;
+    }
+
+    public List<Category> getCategoroies() {
+        try {
+            List<Category> categoroies = categoryService.findAllCategory();
+            return categoroies;
+        } catch (Exception ex) {
+
+            return null;
+        }
+    }
 }
