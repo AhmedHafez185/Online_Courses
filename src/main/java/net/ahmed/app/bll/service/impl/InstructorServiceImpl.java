@@ -10,6 +10,7 @@ import net.ahmed.app.bll.service.InstructorService;
 import net.ahmed.app.dal.entity.Instructor;
 import net.ahmed.app.dal.repository.impl.InstructorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,11 +22,14 @@ import org.springframework.transaction.annotation.Transactional;
 public class InstructorServiceImpl implements InstructorService {
 	@Autowired
 	InstructorRepo instructorRepo;
-
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Transactional
 	@Override
 	public Instructor addInstructor(Instructor instructor) throws Exception {
 		try {
+			instructor.setPassword(passwordEncoder.encode(instructor.getPassword()));
 			Instructor resultInstructor = instructorRepo.add(instructor);
 			return resultInstructor;
 		} catch (Exception ex) {

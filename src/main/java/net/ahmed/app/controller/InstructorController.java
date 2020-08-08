@@ -21,6 +21,7 @@ import net.ahmed.app.bll.service.InstructorService;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Instructor;
 import net.ahmed.app.dal.entity.InstructorField;
+import net.ahmed.app.utils.CoursesConstants;
 import net.ahmed.app.validator.InstructorValidator;
 
 @Controller
@@ -32,8 +33,6 @@ public class InstructorController {
 	InstructorService instructorService;
 	@Autowired
 	InstructorValidator instructorValidator;
-	@Autowired
-	ServletContext servletContext;
 	@GetMapping("/register")
     public String registerPage(Model model) {
 		try {
@@ -62,6 +61,15 @@ public class InstructorController {
 		}
 		
 	}
+	public InstructorField populateInstructorField(InstructorField instructorField) throws Exception {
+		Integer fieldId = Integer.parseInt(instructorField.getName().trim());
+		for(InstructorField instField : fields.findAllInstructorField()) {
+			if(instField.getId()==fieldId) {
+			return instField;
+			}
+		}
+		return null;
+	}
 	@SuppressWarnings("null")
 	@PostMapping("/registerProcess")
 	public String registerProcess(@ModelAttribute("instructor")Instructor instructor,BindingResult result) {
@@ -69,31 +77,28 @@ public class InstructorController {
 		if(result.hasErrors()) {
 			return "instructor_register";
 		}else {
-			System.out.println(instructor.getInstructorField().toString());
-			System.out.println("ID : "+instructor.getInstructorField().getId());
-			System.out.println("NAME : "+instructor.getInstructorField().getName());
-			MultipartFile multipartFile = instructor.getProfileImage();
-			MultipartFile multipartFile2 = instructor.getUserCV();
-	        if (multipartFile != null || !multipartFile.isEmpty()) {
+			MultipartFile multipartImage = instructor.getProfileImage();
+			MultipartFile multipartCVFile = instructor.getUserCV();
+	        if (multipartImage != null || !multipartImage.isEmpty() || multipartCVFile != null || !multipartCVFile.isEmpty()) {
 	        	
-	            String fileName = servletContext.getRealPath("/") + "resources\\images\\" + multipartFile.getOriginalFilename();
-	            String fileName2 = servletContext.getRealPath("/") + "resources\\cv_files\\" + multipartFile2.getOriginalFilename();
+	            String imagePath  =  CoursesConstants.IMAGES + multipartImage.getOriginalFilename();
+	            String cvFilePath = CoursesConstants.CV_FILES + multipartCVFile.getOriginalFilename();
 
 	            try {
-	                multipartFile.transferTo(new File(fileName));
-	                instructor.setPhoto(multipartFile.getOriginalFilename());
-	                multipartFile2.transferTo(new File(fileName2));
-	                instructor.setCvFile(multipartFile2.getOriginalFilename());
+	            	InstructorField instrField = populateInstructorField(instructor.getInstructorField());
+	            	instructor.setInstructorField(instrField);
+	            	multipartImage.transferTo(new File(imagePath));
+	                instructor.setPhoto(multipartImage.getOriginalFilename());
+	                multipartCVFile.transferTo(new File(cvFilePath));
+	                instructor.setCvFile(multipartCVFile.getOriginalFilename());
 	                instructorService.addInstructor(instructor);
-	                System.out.println(fileName);
-	                System.out.println(fileName2);
-	                return "showLogin";
+	                return "login";
 	            } catch (Exception e) {
 	                result.rejectValue("photo", e.getMessage());
 	                return "instructor_register";
 	            }
 	        }
-	        result.rejectValue("photo","Errors !!!");
+	        result.rejectValue("profileImage","Errors !!!");
 	        return "instructor_register";
 		}
 		

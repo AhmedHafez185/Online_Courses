@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Category;
+import net.ahmed.app.dal.entity.Instructor;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,5 +53,13 @@ public class HomeController {
 
             return null;
         }
+    }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView showLogin() {
+    	Instructor instructor = new Instructor();
+    	
+        ModelAndView model = new ModelAndView("login");
+        model.addObject("instructor", instructor);
+        return model;
     }
 }

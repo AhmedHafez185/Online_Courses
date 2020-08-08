@@ -10,6 +10,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import net.ahmed.app.bll.service.InstructorService;
 import net.ahmed.app.dal.entity.Instructor;
+import net.ahmed.app.utils.DateUtils;
 
 @Component
 public class InstructorValidator implements Validator{
@@ -37,22 +38,25 @@ public class InstructorValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confrimPassword","NotEmpty.InstructorForm.confirmPassword");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty.InstructorForm.gender");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "country", "NotEmpty.InstructorForm.country");
-		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "instructorField", "NotEmpty.InstructorForm.instructorField");		
 		if(instructor.getBirthDate()==null) {
 			errors.rejectValue("birthDate", "NotValid.InstructorForm.birthDate");
+		}else {
+			if(!DateUtils.compareBirthDate(DateUtils.convertToLocalDateViaInstant(instructor.getBirthDate()))) {
+				errors.rejectValue("birthDate", "NotValid.InstructorForm.invalidBirthDate");
+			}
 		}
 		if(!emailValidator.valid(instructor.getEmail())){
 			errors.rejectValue("email", "Pattern.InstructorForm.email");
 		}
-	
-		if(instructor.getGender().equals("notSelected")){
-			errors.rejectValue("gender", "NotEmpty.InstructorForm.gender");
-		}
 		if(instructor.getDescription().length()<50){
 			errors.rejectValue("description", "NotEmpty.InstructorForm.description");
 		}
+		if(instructor.getInstructorField().getName().isEmpty() || instructor.getInstructorField().getName().trim().equals("")){
+			errors.rejectValue("instructorField", "NotEmpty.InstructorForm.instructorField");
+		}
 		if(instructor.getPassword().length()<8 || instructor.getPassword().isEmpty() || instructor.getPassword().equals("")){
-			errors.rejectValue("description", "NotEmpty.InstructorForm.password");
+			errors.rejectValue("password", "NotEmpty.InstructorForm.password");
 		}
 		if(instructor.getYearOfExp()==null || instructor.getYearOfExp()<=0){
 			errors.rejectValue("yearOfExp", "NotEmpty.InstructorForm.yearOfExp");
@@ -61,7 +65,12 @@ public class InstructorValidator implements Validator{
 		if (!instructor.getPassword().equals(instructor.getConfrimPassword())) {
 			errors.rejectValue("confrimPassword", "Diff.Instructorform.confirmPassword");
 		}
-		
+		if(instructor.getUserCV().getOriginalFilename().trim().length()<1) {
+			errors.rejectValue("userCV","NotEmpty.InstructorForm.cvFile");
+		}
+		if(instructor.getProfileImage().getOriginalFilename().trim().length()<1) {
+			errors.rejectValue("profileImage","NotEmpty.InstructorForm.profileImage");
+		}
 		try {
 			if (instructorService.checkEmail(instructor.getEmail())) {
 				errors.rejectValue("email", "Exists.InstructorForm.email");

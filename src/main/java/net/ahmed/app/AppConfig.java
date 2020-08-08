@@ -11,6 +11,8 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 /**
@@ -27,4 +29,5 @@ public class AppConfig {
 		multipartResolver.setMaxUploadSize(1024*1024*5);
 		return multipartResolver;
 	}
+	
 }

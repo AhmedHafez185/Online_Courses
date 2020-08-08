@@ -125,7 +125,7 @@
 								type="file" accept="image/gif, image/jpeg, image/png"  />
 							
 						</div>
-						<form:errors path="photo" cssStyle="color:#FF0000"/>
+						<form:errors path="profileImage" cssStyle="color:#FF0000"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -139,7 +139,7 @@
 								type="file" accept="application/pdf"  />
 							
 						</div>
-						<form:errors path="cvFile" cssStyle="color:#FF0000"/>
+						<form:errors path="userCV" cssStyle="color:#FF0000"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -150,6 +150,7 @@
 								class="glyphicon glyphicon-list"></i>
 							</span>
 							<form:select path="gender"  name="gender"  class="form-control selectpicker" >
+								<form:option value="" label="-- Select -- " />
 								<form:options items="${genderList}"/>
 							</form:select>
 						</div>
@@ -166,6 +167,7 @@
 							</span>
 							<form:select path="country" name="country"
 								class="form-control selectpicker" >
+								<option value="">-- Select --</option>
 								<%@include file="/resources/countries.html"%>
 							</form:select>
 						</div>
@@ -181,8 +183,9 @@
 							</span>
 							<form:select path="instructorField" 
 								class="form-control selectpicker" >
+								<form:option value="" label="-- Select -- " />
 								<c:forEach items="${instrFields}" var="ins_field">
-                                                                    <form:option value="${ins_field.id}" label="${ins_field.name}" />
+                                       <form:option value="${ins_field.id}" label="${ins_field.name}" />
 								</c:forEach>
 							</form:select>
 							
