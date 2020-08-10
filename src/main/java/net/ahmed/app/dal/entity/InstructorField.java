@@ -70,7 +70,7 @@ public class InstructorField  implements java.io.Serializable {
         this.name = name;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="instructorField",cascade=CascadeType.MERGE)
+@OneToMany(fetch=FetchType.LAZY, mappedBy="instructorField")
     public Set<Instructor> getInstructors() {
         return this.instructors;
     }

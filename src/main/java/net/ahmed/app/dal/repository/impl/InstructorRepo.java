@@ -27,16 +27,5 @@ public class InstructorRepo extends AbstractRepo<Instructor>{
     public InstructorRepo() {
         super(Instructor.class);
     }
-    public Integer findInstructorByEmail(String email) {
-    	
-        CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<Instructor> entityCriteriaQuery = criteriaBuilder.createQuery(Instructor.class);
-        Root<Instructor> from = entityCriteriaQuery.from(Instructor.class);
-        entityCriteriaQuery.select(from);
-        entityCriteriaQuery.where(criteriaBuilder.equal(from.get("email"), email));
-        Query<Instructor> instructorQuery = getCurrentSession().createQuery(entityCriteriaQuery);
-        List<Instructor> entityList = instructorQuery.getResultList();
-        System.out.println("Size = "+entityList.size());
-        return entityList.size();
-    }
+    
 }

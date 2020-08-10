@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -28,7 +29,8 @@ public class HomeController {
 
     @Autowired
     LookupsService categoryService;
-
+    @Autowired
+    PasswordEncoder passwordEncoder;
     @GetMapping
     public ModelAndView home() {
         List<Category> categories = getCategoroies();
@@ -55,11 +57,16 @@ public class HomeController {
         }
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView showLogin() {
-    	Instructor instructor = new Instructor();
-    	
-        ModelAndView model = new ModelAndView("login");
-        model.addObject("instructor", instructor);
-        return model;
+    public String showLogin() {    	
+       System.out.println("Passwod : "+passwordEncoder.encode("admin"));
+        return "login";
+    }
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String authError() {    	
+        return "error/403";
+    }
+    @RequestMapping(value = "/404", method = RequestMethod.GET)
+    public String NotFoundPageError() {    	
+        return "error/404";
     }
 }

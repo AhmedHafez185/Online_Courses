@@ -1,7 +1,6 @@
 package net.ahmed.app.validator;
 
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -9,6 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import net.ahmed.app.bll.service.InstructorService;
+import net.ahmed.app.bll.service.UserService;
 import net.ahmed.app.dal.entity.Instructor;
 import net.ahmed.app.utils.DateUtils;
 
@@ -18,8 +18,10 @@ public class InstructorValidator implements Validator{
 	@Qualifier("emailValidator")
 	EmailValidator emailValidator;
 	
-	@Autowired
+        @Autowired
 	InstructorService instructorService;
+        @Autowired
+	       UserService userService;
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -72,7 +74,7 @@ public class InstructorValidator implements Validator{
 			errors.rejectValue("profileImage","NotEmpty.InstructorForm.profileImage");
 		}
 		try {
-			if (instructorService.checkEmail(instructor.getEmail())) {
+			if (userService.checkEmail(instructor.getEmail())) {
 				errors.rejectValue("email", "Exists.InstructorForm.email");
 			}
 		} catch (Exception e) {

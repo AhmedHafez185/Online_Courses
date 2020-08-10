@@ -22,14 +22,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class InstructorServiceImpl implements InstructorService {
 	@Autowired
 	InstructorRepo instructorRepo;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
 	@Transactional
 	@Override
 	public Instructor addInstructor(Instructor instructor) throws Exception {
 		try {
-			instructor.setPassword(passwordEncoder.encode(instructor.getPassword()));
 			Instructor resultInstructor = instructorRepo.add(instructor);
 			return resultInstructor;
 		} catch (Exception ex) {
@@ -80,14 +76,6 @@ public class InstructorServiceImpl implements InstructorService {
 		} catch (Exception ex) {
 			throw ex;
 		}
-	}
-
-	@Transactional
-	@Override
-	public boolean checkEmail(String email) {
-		if (instructorRepo.findInstructorByEmail(email) > 0)
-			return true;
-		return false;
-	}
-
+	
+        }
 }

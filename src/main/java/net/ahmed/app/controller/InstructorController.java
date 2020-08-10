@@ -19,8 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import net.ahmed.app.bll.service.InstructorService;
 import net.ahmed.app.bll.service.LookupsService;
+import net.ahmed.app.bll.service.UserService;
 import net.ahmed.app.dal.entity.Instructor;
 import net.ahmed.app.dal.entity.InstructorField;
+import net.ahmed.app.dal.entity.User;
 import net.ahmed.app.utils.CoursesConstants;
 import net.ahmed.app.validator.InstructorValidator;
 
@@ -33,6 +35,10 @@ public class InstructorController {
 	InstructorService instructorService;
 	@Autowired
 	InstructorValidator instructorValidator;
+        @Autowired
+        UserService userService;
+        @Autowired
+	ServletContext servletContext;
 	@GetMapping("/register")
     public String registerPage(Model model) {
 		try {
@@ -81,8 +87,8 @@ public class InstructorController {
 			MultipartFile multipartCVFile = instructor.getUserCV();
 	        if (multipartImage != null || !multipartImage.isEmpty() || multipartCVFile != null || !multipartCVFile.isEmpty()) {
 	        	
-	            String imagePath  =  CoursesConstants.IMAGES + multipartImage.getOriginalFilename();
-	            String cvFilePath = CoursesConstants.CV_FILES + multipartCVFile.getOriginalFilename();
+	            String imagePath  =  servletContext.getRealPath("/") + "resources\\images\\" + multipartImage.getOriginalFilename();
+	            String cvFilePath = servletContext.getRealPath("/") + "resources\\cv_file\\" + multipartCVFile.getOriginalFilename();
 
 	            try {
 	            	InstructorField instrField = populateInstructorField(instructor.getInstructorField());
@@ -92,6 +98,14 @@ public class InstructorController {
 	                multipartCVFile.transferTo(new File(cvFilePath));
 	                instructor.setCvFile(multipartCVFile.getOriginalFilename());
 	                instructorService.addInstructor(instructor);
+                        System.out.println("ID "+instructor.getId());
+                        User user = new User();
+                        user.setEmail(instructor.getEmail());
+                        user.setPassword(instructor.getPassword());
+                        user.setUserId(instructor.getId());
+                        user.setUserType("Instructor");
+                        userService.addUser(user);
+                        System.out.println("ID "+user.getId());
 	                return "login";
 	            } catch (Exception e) {
 	                result.rejectValue("photo", e.getMessage());
@@ -102,11 +116,6 @@ public class InstructorController {
 	        return "instructor_register";
 		}
 		
-	}
-	@GetMapping("/showLogin")
-	public String ShowLogin(Model model) {
-		model.addAttribute("Instructor",new Instructor());
-		return "login";
 	}
 	
 	
