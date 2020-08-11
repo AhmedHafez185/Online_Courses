@@ -6,7 +6,7 @@
     <ul id="top_menu">
         <li><a href="${pageContext.request.contextPath}/views/login.jsp" class="login">Login</a></li>
         <li><a href="#0" class="search-overlay-menu-btn">Search</a></li>
-        <li class="hidden_tablet"><a href="admission.html" class="btn_1 rounded">Admission</a></li>
+        <li class="hidden_tablet"><a href="${pageContext.request.contextPath}/logout" class="btn_1 rounded">Logout</a></li>
     </ul>
     <!-- /top_menu -->
     <a href="#menu" class="btn_mobile">

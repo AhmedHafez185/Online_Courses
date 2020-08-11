@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package net.ahmed.app.security;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.ahmed.app.bll.service.UserService;
 import net.ahmed.app.dal.entity.User;
 import net.ahmed.app.dal.repository.impl.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +24,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class AppUserDetailsService implements UserDetailsService{
     
     @Autowired
-    UserRepo userRepo;
-    @Override
-    @Transactional
+    UserService userService ;
+    @Override    
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepo.findUserByEmail(username);
-        return new AppUserDetails(user);
+        User user;
+        try {
+            System.out.println("Username : "+username);
+            user = userService.findUserByEmail(username);
+            return new AppUserDetails(user);
+        } catch (Exception ex) {
+            return null;
+        }
+        
     }
     
 }

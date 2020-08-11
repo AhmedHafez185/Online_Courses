@@ -32,9 +32,11 @@ public class UserRepo extends AbstractRepo<User>{
         CriteriaQuery<User> entityCriteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> from = entityCriteriaQuery.from(User.class);
         entityCriteriaQuery.select(from);
+        System.out.println("Email entered "+email);
         entityCriteriaQuery.where(criteriaBuilder.equal(from.get("email"), email));
         Query<User> userQuery = getCurrentSession().createQuery(entityCriteriaQuery);
         List<User> entityList = userQuery.getResultList();
+        System.out.println("Size in Repo "+entityList.size());
         return entityList.get(0);
     }
     public Integer checkUserEmail(String email) {
@@ -42,6 +44,7 @@ public class UserRepo extends AbstractRepo<User>{
         CriteriaQuery<User> entityCriteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> from = entityCriteriaQuery.from(User.class);
         entityCriteriaQuery.select(from);
+        
         entityCriteriaQuery.where(criteriaBuilder.equal(from.get("email"), email));
         Query<User> userQuery = getCurrentSession().createQuery(entityCriteriaQuery);
         List<User> entityList = userQuery.getResultList();

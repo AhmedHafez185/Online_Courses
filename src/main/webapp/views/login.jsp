@@ -50,7 +50,7 @@
                         <div class="col-lg-6 col-md-6 inputGroupContainer">
                             <div class="input-group">
                                 <span class="input-group-addon"> <i class="glyphicon glyphicon-envelope"></i></span>
-                                <input  name="email" placeholder="Email" class="form-control" type="email"  />
+                                <input  name="username" placeholder="Email" class="form-control" type="email"  />
                             </div>
                         </div>
                     </div>
