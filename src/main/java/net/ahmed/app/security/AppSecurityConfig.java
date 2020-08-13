@@ -41,8 +41,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/instructor/registerProcess","/logout", "/instructor/register", "/403", "/404").permitAll()
-                .antMatchers("/courses").hasAnyAuthority("Student")
+                .antMatchers("/", "/index", "/login", "/instructor/registerProcess","/aboutUs","/contactUs","/logout", "/instructor/register", "/403", "/404").permitAll()
+                .antMatchers("/student/student-profile").hasAnyAuthority("Student")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -52,7 +52,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
                 .and()
-                .csrf().disable()
+                .csrf()
+                .disable()
+                .exceptionHandling().accessDeniedPage("/403")
+                .and()
                 .userDetailsService(appUserDetailsService);
 
     }

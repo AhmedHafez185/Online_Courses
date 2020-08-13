@@ -26,7 +26,7 @@
                     <div class="row">
                         <aside class="col-lg-3" id="sidebar">
                             <div class="profile">
-                                <figure><img src="http://via.placeholder.com/150x150/ccc/fff/teacher_2_small.jpg" alt="Teacher" class="rounded-circle"></figure>
+                                <figure><img src="${basePath}${instructor.photo}" alt="Teacher" class="rounded-circle"></figure>
                                 <ul class="social_teacher">
                                     <li><a href="#"><i class="icon-facebook"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>
@@ -34,7 +34,7 @@
                                     <li><a href="#"><i class="icon-email"></i></a></li>
                                 </ul>
                                 <ul>
-                                    <li>Name <span class="float-right">Silvia Doe</span> </li>
+                                    <li>Name <span class="float-right">${instructor.firstName} ${instructor.lastName}</span> </li>
                                     <li>Students <span class="float-right">42</span></li>
                                     <li>Lessons <span class="float-right">12</span></li>
                                     <li>Courses <span class="float-right">15</span></li>
@@ -48,13 +48,11 @@
                                 <div class="indent_title_in">
                                     <i class="pe-7s-user"></i>
                                     <h3>Profile</h3>
-                                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>
+                                    <p>${instructor.country}</p>
+                                    <p>${instructor.instructorField.name}</p>
                                 </div>
                                 <div class="wrapper_indent">
-                                    <p>Lorem ipsum dolor sit amet, dicta oportere ad est, ea eos partem neglegentur theophrastus. Esse voluptatum duo ne, expetenda corrumpit no per, at mei nobis lucilius. No eos semper aperiri neglegentur, vis noluisse quaestio no. Vix an nostro inimicus, qui ut animal fabellas reprehendunt. In quando repudiare intellegebat sed, nam suas dicta melius ea.</p>
-                                    <p>Mei ut decore accusam consequat, alii dignissim no usu. Phaedrum intellegat sit ut, no pri mutat eirmod. In eum iriure perpetua adolescens, pri dicunt prodesset et. Vis dicta postulant ad.</p>
-                                    <h5>Credentials</h5>
-                                    <p>Lorem ipsum dolor sit amet, dicta oportere ad est, ea eos partem neglegentur theophrastus. Esse voluptatum duo ne, expetenda corrumpit no per, at mei nobis lucilius. No eos semper aperiri neglegentur, vis noluisse quaestio no. Vix an nostro inimicus, qui ut animal fabellas reprehendunt. In quando repudiare intellegebat sed, nam suas dicta melius ea.</p>
+                                      <p>${instructor.description}</p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <ul class="list_3">

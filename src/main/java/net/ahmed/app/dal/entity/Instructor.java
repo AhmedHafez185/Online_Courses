@@ -108,7 +108,7 @@ public class Instructor implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
 	@JoinColumn(name = "field", nullable = false)
 	public InstructorField getInstructorField() {
 		return this.instructorField;

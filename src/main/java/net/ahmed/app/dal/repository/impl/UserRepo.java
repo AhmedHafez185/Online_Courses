@@ -22,32 +22,38 @@ import org.springframework.stereotype.Repository;
  * @author Ahmed Hafez
  */
 @Repository
-public class UserRepo extends AbstractRepo<User>{
-    
+public class UserRepo extends AbstractRepo<User> {
+
     public UserRepo() {
         super(User.class);
     }
+
     public User findUserByEmail(String email) {
         CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
         CriteriaQuery<User> entityCriteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> from = entityCriteriaQuery.from(User.class);
         entityCriteriaQuery.select(from);
-        System.out.println("Email entered "+email);
         entityCriteriaQuery.where(criteriaBuilder.equal(from.get("email"), email));
         Query<User> userQuery = getCurrentSession().createQuery(entityCriteriaQuery);
         List<User> entityList = userQuery.getResultList();
-        System.out.println("Size in Repo "+entityList.size());
-        return entityList.get(0);
+        if (entityList.size() > 0) {
+            return entityList.get(0);
+        }
+        return null;
     }
+
     public Integer checkUserEmail(String email) {
         CriteriaBuilder criteriaBuilder = getCurrentSession().getCriteriaBuilder();
         CriteriaQuery<User> entityCriteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> from = entityCriteriaQuery.from(User.class);
         entityCriteriaQuery.select(from);
-        
+
         entityCriteriaQuery.where(criteriaBuilder.equal(from.get("email"), email));
         Query<User> userQuery = getCurrentSession().createQuery(entityCriteriaQuery);
         List<User> entityList = userQuery.getResultList();
-        return entityList.size();
+        if (entityList.size() > 0) {
+            return entityList.size();
+        }
+        return 0;
     }
 }
