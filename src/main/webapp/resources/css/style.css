@@ -621,7 +621,7 @@ ul#top_menu li a.btn_1:hover {
   border-bottom: 5px solid #FFC107;
 }
 #hero_in.general:before {
-  background: url(http://via.placeholder.com/1600x1067/ccc/fff/bg_general.jpg) center center no-repeat;
+  background: url(../img/iStock-872232248.jpg) center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -1129,7 +1129,7 @@ video {
   }
 }
 .hero_single:before {
-  background: url(http://via.placeholder.com/1600x1067/ccc/fff/home_section_2.jpg) center center no-repeat fixed;
+  background: url("../img/pop-onlinecourses.jpg") center center no-repeat fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -42,3 +42,8 @@ select.form-control:not([size]):not([multiple]) {
     margin-top: 1px\9;
     line-height: normal;
 }
+.profileImage{
+    height: 160px;
+    width: 160px;
+
+}

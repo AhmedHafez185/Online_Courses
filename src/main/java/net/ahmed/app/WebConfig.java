@@ -30,6 +30,9 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
           .addResourceHandler("/resources/**").addResourceLocations("/resources/"); 
+        registry
+          .addResourceHandler("/images/**").addResourceLocations("file:C:/Users/Ahmed Hafez/Documents/NetBeansProjects/GitHubProjects/Online_Courses/target/Online_Courses0-SNAPSHOT/resources/images/"); 
+        
     }
     @Bean
     public ViewResolver internalResourceViewResolver() {

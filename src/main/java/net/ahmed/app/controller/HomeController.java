@@ -6,8 +6,11 @@
 package net.ahmed.app.controller;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Category;
+import net.ahmed.app.utils.UploadUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +38,7 @@ public class HomeController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
+        
         return "index";
     }
     @RequestMapping(value = "/courses", method = RequestMethod.GET)

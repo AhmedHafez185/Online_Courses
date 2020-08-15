@@ -26,7 +26,7 @@
                     <div class="row">
                         <aside class="col-lg-3" id="sidebar">
                             <div class="profile">
-                                <figure><img src="${basePath}${instructor.photo}" alt="Teacher" class="rounded-circle"></figure>
+                                <figure><img src="${pageContext.request.contextPath}/resources/images/users/${instructor.photo}" alt="Teacher" class="profileImage rounded-circle"></figure>
                                 <ul class="social_teacher">
                                     <li><a href="#"><i class="icon-facebook"></i></a></li>
                                     <li><a href="#"><i class="icon-twitter"></i></a></li>

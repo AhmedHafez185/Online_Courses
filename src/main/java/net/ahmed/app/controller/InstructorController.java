@@ -28,6 +28,7 @@ import net.ahmed.app.dal.entity.InstructorField;
 import net.ahmed.app.dal.entity.User;
 import net.ahmed.app.security.AppUserDetails;
 import net.ahmed.app.utils.CoursesConstants;
+import net.ahmed.app.utils.UploadUtils;
 import net.ahmed.app.validator.InstructorValidator;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.ModelAndView;
@@ -91,34 +92,34 @@ public class InstructorController {
 
     @SuppressWarnings("null")
     @PostMapping("/registerProcess")
-    public String registerProcess(@ModelAttribute("instructor") Instructor instructor, BindingResult result, HttpServletRequest request) {
+    public String registerProcess(@ModelAttribute("instructor") Instructor instructor, BindingResult result) {
         instructorValidator.validate(instructor, result);
+        UploadUtils uploadUtils = new UploadUtils(servletContext.getRealPath("/"));
         if (result.hasErrors()) {
             return "instructor_register";
         } else {
+            
             MultipartFile multipartImage = instructor.getProfileImage();
             MultipartFile multipartCVFile = instructor.getUserCV();
+            
             if (multipartImage != null || !multipartImage.isEmpty() || multipartCVFile != null || !multipartCVFile.isEmpty()) {
-
-                String imagePath = servletContext.getRealPath("/") + "resources\\images\\" + multipartImage.getOriginalFilename();
-                String cvFilePath = servletContext.getRealPath("/") + "resources\\cv_file\\" + multipartCVFile.getOriginalFilename();
-
                 try {
+                    
+                    uploadUtils.uploadFile("images\\users", multipartImage);
+                    uploadUtils.uploadFile("cv_file", multipartCVFile);
+                    
                     InstructorField instrField = populateInstructorField(instructor.getInstructorField());
                     instructor.setInstructorField(instrField);
-                    multipartImage.transferTo(new File(imagePath));
                     instructor.setPhoto(multipartImage.getOriginalFilename());
-                    multipartCVFile.transferTo(new File(cvFilePath));
                     instructor.setCvFile(multipartCVFile.getOriginalFilename());
+                    
                     instructorService.addInstructor(instructor);
-                    System.out.println("ID " + instructor.getId());
                     User user = new User();
                     user.setEmail(instructor.getEmail());
                     user.setPassword(instructor.getPassword());
-                    user.setUserId(instructor.getId());
                     user.setUserType("Instructor");
+                    user.setUserId(instructor.getId());
                     userService.addUser(user);
-                    System.out.println("ID " + user.getId());
                     return "login";
                 } catch (Exception e) {
                     result.rejectValue("photo", e.getMessage());
@@ -137,7 +138,6 @@ public class InstructorController {
         AppUserDetails principal = (AppUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = principal.getUser();
         mav.addObject("user", user);
-        mav.addObject("basePath", servletContext.getRealPath("/") + "resources\\images\\");
         mav.addObject("instructor", getInstructor(user.getUserId()));
         return mav;
 

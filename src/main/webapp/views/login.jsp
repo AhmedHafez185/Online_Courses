@@ -72,7 +72,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="text-center add_top_10">New to Udema? <strong><a href="${pageContext.request.contextPath}/instructor/instructor_register">Sign up!</a></strong></div>
+                    <div class="text-center add_top_10">New to Udema? <strong><a href="${pageContext.request.contextPath}/instructor/register">Sign up!</a></strong></div>
                 </fieldset>
             </form>
         </div>

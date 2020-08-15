@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package net.ahmed.app.security;
+
+import javax.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    ServletContext servletContext;
+    @Autowired
     AppUserDetailsService appUserDetailsService;
     private final String[] url = {
         "/instructor/register",
@@ -31,9 +35,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/resources/**",servletContext.getRealPath("/")+"**");
     }
 
     @Override
@@ -41,7 +46,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/instructor/registerProcess","/aboutUs","/contactUs","/logout", "/instructor/register", "/403", "/404").permitAll()
+                .antMatchers("/", "/index", "/login", "/instructor/registerProcess", "/aboutUs", "/contactUs", "/logout","/instructor/register", "/403", "/404").permitAll()
                 .antMatchers("/student/student-profile").hasAnyAuthority("Student")
                 .anyRequest()
                 .authenticated()

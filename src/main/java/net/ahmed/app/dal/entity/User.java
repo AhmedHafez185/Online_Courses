@@ -5,6 +5,8 @@
  */
 package net.ahmed.app.dal.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +21,12 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "users", catalog = "online_courses_db", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
-    private Integer id;
+public class User implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
     private String email;
     private String password;
     private Integer userId;
