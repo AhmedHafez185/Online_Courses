@@ -48,6 +48,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/login", "/instructor/registerProcess", "/aboutUs", "/contactUs", "/logout","/instructor/register", "/403", "/404").permitAll()
                 .antMatchers("/student/student-profile").hasAnyAuthority("Student")
+                .antMatchers("/courses/addCourse").hasAnyAuthority("Instructor")
                 .anyRequest()
                 .authenticated()
                 .and()

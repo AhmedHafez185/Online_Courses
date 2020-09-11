@@ -21,17 +21,17 @@
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
-<script
-	src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.1.3/dist/bootstrap-validate.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.js"></script>
+              href="${pageContext.request.contextPath}/resources/js/login/bootstrap.min.css" />
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/jquery.min.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/bootstrap.min.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/validator.min.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/bootstrap-validate.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/validator.js"></script>
 
 <link
 	href="${pageContext.request.contextPath}/resources/css/edited-style.css"
@@ -167,7 +167,7 @@
 							</span>
 							<form:select path="country" name="country"
 								class="form-control selectpicker" >
-								<option value="">-- Select --</option>
+								<form:option value="" label="-- Select --"/>
 								<%@include file="/resources/countries.html"%>
 							</form:select>
 						</div>
@@ -185,7 +185,7 @@
 								class="form-control selectpicker" >
 								<form:option value="" label="-- Select -- " />
 								<c:forEach items="${instrFields}" var="ins_field">
-                                       <form:option value="${ins_field.id}" label="${ins_field.name}" />
+                                                                  <form:option value="${ins_field.id}" label="${ins_field.name}" />
 								</c:forEach>
 							</form:select>
 							

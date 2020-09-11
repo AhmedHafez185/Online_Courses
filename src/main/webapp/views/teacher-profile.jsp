@@ -35,9 +35,8 @@
                                 </ul>
                                 <ul>
                                     <li>Name <span class="float-right">${instructor.firstName} ${instructor.lastName}</span> </li>
-                                    <li>Students <span class="float-right">42</span></li>
-                                    <li>Lessons <span class="float-right">12</span></li>
-                                    <li>Courses <span class="float-right">15</span></li>
+                                    <li>Students <span class="float-right">${noOfStudents}</span></li>
+                                    <li>Courses <span class="float-right">${noOfCourses}</span></li>
                                 </ul>
                             </div>
                         </aside>
@@ -52,7 +51,7 @@
                                     <p>${instructor.instructorField.name}</p>
                                 </div>
                                 <div class="wrapper_indent">
-                                      <p>${instructor.description}</p>
+                                    <p>${instructor.description}</p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <ul class="list_3">
@@ -85,11 +84,9 @@
                                 <div class="indent_title_in">
                                     <i class="pe-7s-display1"></i>
                                     <h3>My courses</h3>
-                                    <p>Mussum ipsum cacilds, vidis litro abertis.</p>
-                                </div>
+                                    <p> <p>${instructor.instructorField.name}</p>.                                </div>
                                 <div class="wrapper_indent">
-                                    <p>Mei ut decore accusam consequat, alii dignissim no usu. Phaedrum intellegat sit ut, no pri mutat eirmod. In eum iriure perpetua adolescens, pri dicunt prodesset et. Vis dicta postulant ad.</p>
-                                    <table class="table table-responsive table-striped add_bottom_30">
+                                        <table class="table table-responsive table-striped add_bottom_30">
                                         <thead>
                                             <tr>
                                                 <th>Category</th>
@@ -98,46 +95,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Business Plan</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star voted"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Economy pinciples</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i> <i class="icon-star"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Understand diagrams</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Marketing strategies</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Marketing</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star voted"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Business Plan</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star"></i> <i class="icon-star"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Economy pinciples</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Business</td>
-                                                <td><a href="#">Understand diagrams</a></td>
-                                                <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star"></i></td>
-                                            </tr>
+                                            <c:forEach items="${instructor.courses}" var="course">
+                                                <tr>
+                                                    <td>${course.category.name}</td>
+                                                    <td><a href="${pageContext.request.contextPath}/courses/course-details?courseId=${course.id}">${course.title}</a></td>
+                                                    <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star voted"></i></td>
+                                                </tr>
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

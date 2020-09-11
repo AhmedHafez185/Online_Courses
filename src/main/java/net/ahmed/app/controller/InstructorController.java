@@ -1,5 +1,4 @@
 package net.ahmed.app.controller;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,11 +22,12 @@ import net.ahmed.app.bll.service.InstructorService;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.bll.service.UserService;
 import net.ahmed.app.dal.entity.Category;
+import net.ahmed.app.dal.entity.Course;
+import net.ahmed.app.dal.entity.Enrollment;
 import net.ahmed.app.dal.entity.Instructor;
 import net.ahmed.app.dal.entity.InstructorField;
 import net.ahmed.app.dal.entity.User;
 import net.ahmed.app.security.AppUserDetails;
-import net.ahmed.app.utils.CoursesConstants;
 import net.ahmed.app.utils.UploadUtils;
 import net.ahmed.app.validator.InstructorValidator;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -139,6 +139,19 @@ public class InstructorController {
         User user = principal.getUser();
         mav.addObject("user", user);
         mav.addObject("instructor", getInstructor(user.getUserId()));
+        Instructor inst = getInstructor(user.getUserId());
+        Integer noOfCourses = 0;
+        Integer noOfStudents = 0;
+        for(Course course:inst.getCourses()){
+            noOfCourses++;
+            for(Enrollment student : course.getEnrollments()){
+                noOfStudents++;
+            }
+            
+        }
+        mav.addObject("noOfCourses", noOfCourses);
+        mav.addObject("noOfStudents", noOfStudents);
+        
         return mav;
 
     }

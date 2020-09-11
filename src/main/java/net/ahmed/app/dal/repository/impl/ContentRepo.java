@@ -15,7 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class ContentRepo extends AbstractRepo<Content>{
-    
     public ContentRepo() {
         super(Content.class);
     }

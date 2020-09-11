@@ -7,14 +7,6 @@ package net.ahmed.app.dal.repository.impl;
 
 import net.ahmed.app.dal.entity.Instructor;
 import net.ahmed.app.dal.repository.AbstractRepo;
-
-import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -26,6 +18,9 @@ public class InstructorRepo extends AbstractRepo<Instructor>{
     
     public InstructorRepo() {
         super(Instructor.class);
+    }
+    public Instructor loadInstructor(Integer id) {
+        return  getCurrentSession().load(Instructor.class, id);
     }
     
 }

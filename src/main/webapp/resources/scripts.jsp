@@ -4,4 +4,3 @@
 <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/validate.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/pw_strenght.js"></script>
-

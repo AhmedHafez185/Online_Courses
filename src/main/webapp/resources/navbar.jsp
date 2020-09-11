@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<header class="header menu_2">
+<header class="header menu_2 ">
     <div id="preloader"><div data-loader="circle-side"></div></div><!-- /Preload -->
     <div id="logo">
-        <a href="index.html"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+        <a href="${pageContext.request.contextPath}/index"><img src="${pageContext.request.contextPath}/resources/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
     </div>
     <ul id="top_menu">
         <li><a href="#0" class="search-overlay-menu-btn">Search</a></li>
@@ -14,8 +14,6 @@
             <li><a href="${pageContext.request.contextPath}/views/login.jsp" class="login">Login</a></li>
             <li class="hidden_tablet"><a href="${pageContext.request.contextPath}/instructor/register" class="btn_1 rounded">Register</a></li>
             </sec:authorize>
-
-
     </ul>
 
     <!-- /top_menu -->
@@ -34,7 +32,7 @@
             <li><span><a href="#0">Courses</a></span>
                 <ul>
                     <c:forEach items="${categories}" var="category">
-                        <li><a href="${pageContext.request.contextPath}/courses?cat_id=${category.id}">${category.name}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/categories/category-details?cat_id=${category.id}">${category.name}</a></li>
                         </c:forEach>
                 </ul>
             </li>
@@ -68,5 +66,5 @@
             <button type="submit"><i class="icon_search"></i>
             </button>
         </form>
-    </div><!-- End Search Menu -->
+    </div>
 </header>

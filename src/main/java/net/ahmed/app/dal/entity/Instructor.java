@@ -201,7 +201,7 @@ public class Instructor implements java.io.Serializable {
 		this.country = country;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "instructor",cascade=CascadeType.ALL)
 	public Set<Course> getCourses() {
 		return this.courses;
 	}

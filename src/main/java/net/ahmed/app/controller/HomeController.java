@@ -8,8 +8,10 @@ package net.ahmed.app.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import net.ahmed.app.bll.service.CourseService;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Category;
+import net.ahmed.app.dal.entity.Course;
 import net.ahmed.app.utils.UploadUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +33,8 @@ public class HomeController {
     LookupsService categoryService;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    CourseService courseService;
     @GetMapping
     public String home() {
         return "index";
@@ -58,7 +62,9 @@ public class HomeController {
     public void getCategoroies(Model model) {
         try {
             List<Category> categoroies = categoryService.findAllCategory();
+            List<Course> courses = courseService.findAllCourse();
             model.addAttribute("categories",categoroies);
+            model.addAttribute("courses",courses);
         } catch (Exception ex) {
         }
     }

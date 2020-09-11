@@ -47,3 +47,7 @@ select.form-control:not([size]):not([multiple]) {
     width: 160px;
 
 }
+.category-img{
+    width: 350px;
+    height: 200px;
+}
