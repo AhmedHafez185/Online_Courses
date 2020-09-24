@@ -24,12 +24,11 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     ServletContext servletContext;
     @Autowired
     AppUserDetailsService appUserDetailsService;
-    private final String[] url = {
-        "/instructor/register",
-        "/instructor/registerProcess",
-        "/logout",
-        "/index",
-        "/login",};
+    private final String[] url = {"/", "/index",
+        "/login", "/instructor/registerProcess","/student/registerProcess",
+        "/aboutUs", "/contactUs", "/logout",
+        "/instructor/register","/student/register","/403", "/404","/400",
+        "/categories/category-details","/courses/course-details"};
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -46,7 +45,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/instructor/registerProcess", "/aboutUs", "/contactUs", "/logout","/instructor/register", "/403", "/404").permitAll()
+                .antMatchers(url).permitAll()
                 .antMatchers("/student/student-profile").hasAnyAuthority("Student")
                 .antMatchers("/courses/addCourse").hasAnyAuthority("Instructor")
                 .anyRequest()
@@ -63,6 +62,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .userDetailsService(appUserDetailsService);
+        http.headers().frameOptions().disable();
 
     }
 

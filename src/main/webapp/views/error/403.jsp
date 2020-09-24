@@ -21,13 +21,8 @@
 				<div class="row justify-content-center text-center">
 					<div class="col-xl-7 col-lg-9">
 						<h2>403 <i class="icon_error-triangle_alt"></i></h2>
-						<p>Yoy don't have access to this page.</p>
-						<form>
-							<div class="search_bar_error">
-								<input type="text" class="form-control" placeholder="What are you looking for?">
-								<input type="submit" value="Search">
-							</div>
-						</form>
+						<p>You don't have access to this page.</p>
+						
 					</div>
 				</div>
 				<!-- /row -->

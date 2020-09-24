@@ -75,7 +75,7 @@ public class LookupsServiceImpl implements LookupsService {
 
     @Transactional
     @Override
-    public Category getCategory(Integer id) throws Exception {
+    public Category getCategory(Integer id) {
         try {
             Category category = categoryRepo.findById(id);
             return category;

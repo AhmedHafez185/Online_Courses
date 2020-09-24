@@ -559,12 +559,12 @@ ul#top_menu li a.login, ul#top_menu li a.search-overlay-menu-btn {
 ul#top_menu li a.login:before, ul#top_menu li a.search-overlay-menu-btn:before {
   font-family: 'ElegantIcons';
   font-size: 24px;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: #fff;
   text-indent: 0;
   position: absolute;
   left: 0;
-  top: 0;
+  top: 13px;
   font-weight: normal;
   line-height: 1;
 }

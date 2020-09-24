@@ -76,4 +76,15 @@ public class ReviewServiceImpl implements ReviewService{
             throw ex;
         }
     }
+
+    @Override
+    @Transactional
+    public List<Review> findAllReviewByCourse(Integer id) throws Exception {
+        try {
+            List<Review> reviews = reviewRepo.findReviewsByCourse(id);
+            return reviews;
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }

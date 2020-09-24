@@ -9,6 +9,7 @@ import java.util.List;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Category;
 import net.ahmed.app.dal.entity.InstructorField;
+import net.ahmed.app.utils.RecordNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,15 +29,18 @@ public class CategoryController {
     @Autowired
     LookupsService categoryService;
     @GetMapping("category-details")
-     public ModelAndView coursePage(@RequestParam("cat_id") Integer id) throws Exception{
+     public ModelAndView coursePage(@RequestParam(name = "cat_id",required = false) Integer id) throws RecordNotFoundException{
+            if(id == null || id == 0) throw new RecordNotFoundException("Category Id is NULL");
          ModelAndView mav = new ModelAndView("courses");
-         mav.addObject("categoryDetails",categoryService.getCategory(id));
+         Category category = categoryService.getCategory(id);
+         if(category == null) throw new RecordNotFoundException("Category is NULL");
+         mav.addObject("categoryDetails",category);
          return mav;
+         
      }
      @ModelAttribute
     public void commonData(Model model) {
         try {
-            
             List<Category> categories = categoryService.findAllCategory();
             model.addAttribute("categories", categories);
         } catch (Exception e) {

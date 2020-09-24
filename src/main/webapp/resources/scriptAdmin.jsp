@@ -14,5 +14,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/admin.js"></script>
 <!-- Custom scripts for this page-->
 <script src="${pageContext.request.contextPath}/resources/vendor/dropzone.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/edited_js.js"></script>
 <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap-datepicker.js"></script>
 <script>$('input.date-pick').datepicker();</script>

@@ -15,6 +15,7 @@ import net.ahmed.app.dal.entity.Review;
 public interface ReviewService {
     public Review addReview(Review review)throws Exception;
     public List<Review> findAllReview()throws Exception;
+    public List<Review> findAllReviewByCourse(Integer id)throws Exception;
     public Review editReview(Review review)throws Exception;
     public void removeReview(int reviewId)throws Exception;
     public Review getReview(Integer id)throws Exception;

@@ -77,5 +77,16 @@ public class CourseOutlinesServiceImpl implements CourseOutlineService {
             throw ex;
         }
     }
+    
+    @Transactional
+    @Override
+    public List<CourseOutlines> getOutlinesOfCourse(Integer id) throws Exception {
+        try {
+            List<CourseOutlines> outlines = outlineRepo.getOutlinesOfCourse(id);
+            return outlines;
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 
 }

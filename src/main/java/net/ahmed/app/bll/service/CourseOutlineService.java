@@ -18,4 +18,5 @@ public interface CourseOutlineService {
     public CourseOutlines editCourseOutlines(CourseOutlines outline)throws Exception;
     public void removeCourseOutlines(int outlineId)throws Exception;
     public CourseOutlines getCourseOutlines(Integer id)throws Exception;
+    public List<CourseOutlines> getOutlinesOfCourse(Integer id)throws Exception;
 }

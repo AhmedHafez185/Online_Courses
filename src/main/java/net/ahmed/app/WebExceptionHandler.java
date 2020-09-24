@@ -8,6 +8,7 @@ package net.ahmed.app;
 import java.nio.file.AccessDeniedException;
 
 import javax.servlet.http.HttpServletRequest;
+import net.ahmed.app.utils.RecordNotFoundException;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -34,6 +35,11 @@ public class WebExceptionHandler {
 	public String handle(Exception ex) {
 	    return "redirect:/404";
 	}
+        @ExceptionHandler(RecordNotFoundException.class)
+	public String handleRecordNotFound(Exception ex) {
+            return "redirect:/400";
+	}
+        
 
 	
 }

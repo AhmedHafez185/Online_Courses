@@ -92,6 +92,7 @@
                                                 <th>Category</th>
                                                 <th>Course name</th>
                                                 <th>Rate</th>
+                                                <th>Add Videos</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -100,6 +101,7 @@
                                                     <td>${course.category.name}</td>
                                                     <td><a href="${pageContext.request.contextPath}/courses/course-details?courseId=${course.id}">${course.title}</a></td>
                                                     <td class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i> <i class="icon-star voted"></i></td>
+                                                    <td><a href="${pageContext.request.contextPath}/courses/addLesson?courseId=${course.id}"> New Lesson</a></td>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>

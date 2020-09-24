@@ -15,6 +15,10 @@ public class DateUtils {
         LocalDate comparedDate = LocalDate.parse("1996-01-01");
         return birthDate.isBefore(comparedDate);
 	}
+        public static boolean compareBirthDateStudent(LocalDate birthDate) {
+        LocalDate comparedDate = LocalDate.parse("2008-01-01");
+        return birthDate.isBefore(comparedDate);
+	}
         public static boolean checkStartDate(LocalDate starthDate) {
         LocalDate comparedDate = LocalDate.now();
         return starthDate.isAfter(comparedDate);
@@ -23,4 +27,9 @@ public class DateUtils {
         public static boolean compareStartEndDate(LocalDate startDate,LocalDate endDate) {
         return startDate.isBefore(endDate);
 	}
+        public static Date ConvertFromLocalDateToDate(LocalDate local){
+            ZoneId defaultZoneId = ZoneId.systemDefault();
+            Date date = Date.from(local.atStartOfDay(defaultZoneId).toInstant());
+            return date;
+        }
 }

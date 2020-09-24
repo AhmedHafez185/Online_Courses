@@ -32,6 +32,7 @@ public class CourseValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Course course = (Course) target;
+        
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.course.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "NotEmpty.course.description");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "coursePic", "NotEmpty.course.picture");

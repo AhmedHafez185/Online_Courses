@@ -4,79 +4,173 @@
     Author     : Ahmed Hafez
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <%@ include file="/resources/header.jsp" %>
-    </head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description"
+	content="Udema a modern educational site template">
+<meta name="author" content="Ansonika">
+<title>Register</title>
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
+	rel="stylesheet" />
+<link rel="stylesheet"
+              href="${pageContext.request.contextPath}/resources/js/login/bootstrap.min.css" />
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/jquery.min.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/bootstrap.min.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/validator.min.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/bootstrap-validate.js"></script>
+        <script
+        src="${pageContext.request.contextPath}/resources/js/login/validator.js"></script>
 
-    <body id="register_bg">
-
-        <nav id="menu" class="fake_menu"></nav>
-
-        <div id="preloader">
-            <div data-loader="circle-side"></div>
-        </div>
-        <!-- End Preload -->
-
-        <div id="login">
-            <aside>
-                <figure>
-                    <a href="index.html"><img src="img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
-                </figure>
-                <form autocomplete="off">
-                    <div class="form-group">
-
-                        <span class="input">
-                            <input class="input_field" type="text">
-                            <label class="input_label">
-                                <span class="input__label-content">Your Name</span>
-                            </label>
-                        </span>
-
-                        <span class="input">
-                            <input class="input_field" type="text">
-                            <label class="input_label">
-                                <span class="input__label-content">Your Last Name</span>
-                            </label>
-                        </span>
-
-                        <span class="input">
-                            <input class="input_field" type="email">
-                            <label class="input_label">
-                                <span class="input__label-content">Your Email</span>
-                            </label>
-                        </span>
-
-                        <span class="input">
-                            <input class="input_field" type="password" id="password1">
-                            <label class="input_label">
-                                <span class="input__label-content">Your password</span>
-                            </label>
-                        </span>
-
-                        <span class="input">
-                            <input class="input_field" type="password" id="password2">
-                            <label class="input_label">
-                                <span class="input__label-content">Confirm password</span>
-                            </label>
-                        </span>
-
-                        <div id="pass-info" class="clearfix"></div>
-                    </div>
-                    <a href="#0" class="btn_1 rounded full-width add_top_30">Register to Udema</a>
-                    <div class="text-center add_top_10">Already have an acccount? <strong><a href="login.html">Sign In</a></strong></div>
-                </form>
-                <div class="copy">© 2017 Udema</div>
-            </aside>
-        </div>
-        <!-- /login -->
-
-        <%@ include file="/resources/scripts.jsp" %> 
-        <!-- SPECIFIC SCRIPTS -->
-
-
-    </body>
+<link
+	href="${pageContext.request.contextPath}/resources/css/edited-style.css"
+	rel="stylesheet" />
+</head>
+<body id="register_bg">
+	<div class="container">
+		<form:form class="well form-horizontal" modelAttribute="student" 
+			action="${pageContext.request.contextPath}/student/registerProcess " method="post" id="contact_form" enctype="multipart/form-data">
+			<fieldset>
+                            <center><h2 class="register-panel">
+                                    <b style="text-align: center">SignUp</b>
+                                </h2></center>
+				
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">First Name</label>
+					<div class="col-lg-6 col-md-4 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+							<form:input name="firstName" path="firstName" placeholder="First Name" class="form-control" type="text"  />
+							
+						</div>
+						<form:errors path="firstName" cssStyle="color:#ff0000"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">Last Name</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+							<form:input name="lastname" path="lastName" placeholder="Last Name" class="form-control" type="text"  />
+							
+						</div>
+						<form:errors path="lastName" cssStyle="color:#ff0000"/>
+					</div>
+				</div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">E Mail</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-envelope"></i></span>
+							<form:input path="email" name="email" placeholder="Email" class="form-control" type="email"  />
+							
+						</div>
+						<form:errors path="email" cssStyle="color:#ff0000"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">Password</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+							<form:input name="password" path="password" placeholder="Password" class="form-control" type="password"  />
+							
+						</div>
+						<form:errors path="password" cssStyle="color:#ff0000"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">Confirm Password</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group"> 
+						<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i> </span>
+							<form:input name="password" path="confirmPassword" placeholder="Confirm Password" class="form-control"
+								type="password"  />
+						</div>
+						<form:errors path="confirmPassword" cssStyle="color:#ff0000"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">Birth Date</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
+							<form:input name="birhdate" path="birthDate" placeholder="BirthDate" class="form-control" type="date"  />
+							
+						</div>
+						<form:errors path="birthDate" cssStyle="color:#FF0000"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label">Upload Photo</label>
+					<div class="col-lg-6 col-md-6 inputGroupContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i
+								class="glyphicon glyphicon-user"></i>
+							</span>
+							<form:input path="profileImage" name="photo" class="form-control"
+								type="file" accept="image/gif, image/jpeg, image/png"  />
+							
+						</div>
+						<form:errors path="profileImage" cssStyle="color:#FF0000"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label">Gender</label>
+					<div class="col-lg-6 col-md-6 selectContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i
+								class="glyphicon glyphicon-list"></i>
+							</span>
+							<form:select path="gender"  name="gender"  class="form-control selectpicker" >
+								<form:option value="" label="-- Select -- " />
+                                                                <form:options items="${genderList}" />
+							</form:select>
+						</div>
+						<form:errors path="gender" cssStyle="color:#FF0000"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-4 control-label">Country</label>
+					<div class="col-lg-6 col-md-6 selectContainer">
+						<div class="input-group">
+							<span class="input-group-addon"> <i
+								class="glyphicon glyphicon-list"></i>
+							</span>
+							<form:select path="country" name="country"
+								class="form-control selectpicker" >
+								<form:option value="" label="-- Select --"/>
+								<%@include file="/resources/countries.html"%>
+							</form:select>
+						</div>
+						<form:errors path="country" cssStyle="color:#FF0000"/>
+					</div>
+				</div>
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-lg-4 col-md-4 control-label"></label>
+					<div class="col-lg-6 col-md-6">
+						<button type="submit" class="btn btn-success">
+							SUBMIT <span class="glyphicon glyphicon-send"></span>
+						</button>
+					</div>
+				</div>
+			</fieldset>
+		</form:form>
+	</div>
+</body>
 </html>

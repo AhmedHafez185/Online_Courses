@@ -22,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 /**
  *
  * @author Ahmed Hafez
@@ -44,6 +45,11 @@ public class HomeController {
     public String index() {
         
         return "index";
+    }
+    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
+    public String redirect() {
+        
+        return "redirect";
     }
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public String showCourses(@RequestParam("cat_id") String catId) {
@@ -80,6 +86,11 @@ public class HomeController {
     public String notFound() {    	
         return "error/404";
     }
+    @RequestMapping(value = "/400", method = RequestMethod.GET)
+    public String recordNotFound() { 
+        return "error/400";
+    }
+   
    @GetMapping("/studnetProfile")
    public String studentProfile() {
 	   return "student-profile";

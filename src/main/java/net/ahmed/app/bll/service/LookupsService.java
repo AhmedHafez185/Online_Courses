@@ -18,7 +18,7 @@ public interface LookupsService {
     public List<Category> findAllCategory()throws Exception;
     public Category editCategory(Category category)throws Exception;
     public void removeCategory(int categoryId)throws Exception;
-    public Category getCategory(Integer id)throws Exception;
+    public Category getCategory(Integer id);
 
     public InstructorField addInstructorField(InstructorField instructorField)throws Exception;
     public List<InstructorField> findAllInstructorField()throws Exception;
