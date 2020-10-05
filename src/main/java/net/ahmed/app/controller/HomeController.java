@@ -5,9 +5,12 @@
  */
 package net.ahmed.app.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import net.ahmed.app.bll.service.CourseService;
@@ -16,6 +19,7 @@ import net.ahmed.app.dal.entity.Category;
 import net.ahmed.app.dal.entity.Content;
 import net.ahmed.app.dal.entity.Course;
 import net.ahmed.app.dal.entity.CourseOutlines;
+import net.ahmed.app.dal.repository.impl.CourseRepo;
 import net.ahmed.app.utils.UploadUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
@@ -60,6 +64,35 @@ public class HomeController {
     public String showCourses(@RequestParam("cat_id") String catId) {
         Integer id = Integer.parseInt(catId);
         return "courses";
+    }
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public ModelAndView searchForCourses(@RequestParam("q") String name) {
+        String message = "";
+        Integer test = 0;
+        ModelAndView mav = new ModelAndView("search");
+        if(name != null && !name.isEmpty()) {
+             try {
+                List<Course> courses = courseService.getCoursesByName(name.toLowerCase());
+                mav.addObject("courses",courses);
+                mav.addObject("coursePeriod",coursePeriod(courses));
+                message = (courses.size() > 0)?  "Number of Results is "+courses.size() :  "Not Result Matches \""+name+"\"";
+                mav.addObject("message",message);
+                mav.addObject("test",test);
+                return mav;
+            } catch (Exception ex) {
+                mav.addObject("message","Errors : "+ex.getMessage());
+                mav.addObject("courses",new ArrayList<>());
+                mav.addObject("test",test);
+                return mav;
+            }
+        } else {
+            test = 1;
+             message="No Words Enters , Please Put it";
+             mav.addObject("message",message);
+             mav.addObject("test",test);
+             return mav;
+        }
+        
     }
     @RequestMapping(value = "/aboutUs", method = RequestMethod.GET)
     public String aboutUs() {

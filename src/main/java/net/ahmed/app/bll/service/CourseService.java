@@ -18,4 +18,5 @@ public interface CourseService {
     public Course editCourse(Course course)throws Exception;
     public void removeCourse(int courseId)throws Exception;
     public Course getCourse(Integer id)throws Exception;
+    public List<Course> getCoursesByName(String name) throws Exception ;
 }

@@ -26,7 +26,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     ServletContext servletContext;
     @Autowired
     AppUserDetailsService appUserDetailsService;
-    private final String[] url = {"/", "/index",
+    private final String[] url = {"/", "/index","/search",
         "/login", "/instructor/registerProcess","/student/registerProcess",
         "/aboutUs", "/contactUs", "/logout",
         "/instructor/register","/student/register","/403", "/404","/400",

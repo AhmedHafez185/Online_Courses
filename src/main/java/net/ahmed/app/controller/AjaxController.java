@@ -97,7 +97,7 @@ public class AjaxController {
         }
         return messageNotification;
     }
-    
+
     @RequestMapping(value = "addToCard", method = RequestMethod.POST)
     public @ResponseBody
     MessageNotification addToCard(@RequestParam(value = "courseId", required = true) Integer courseId, ModelMap model) {
@@ -106,40 +106,47 @@ public class AjaxController {
         AppUserDetails principal = (AppUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = principal.getUser();
         if (user != null) {
-        if (!"Student".equals(user.getUserType())) {
+            if (!"Student".equals(user.getUserType())) {
                 messageNotification.setMessage("Oops");
                 messageNotification.setMessageTitle("You Don't have the permission to Add this to Cart");
                 messageNotification.setMessageType("error");
                 return messageNotification;
-        }
-        }else{
+            }
+        } else {
             System.out.println("need login");
-             messageNotification.setMessage("Oops");
-                messageNotification.setMessageTitle("You Must Login to Add this course to cart");
-                messageNotification.setMessageType("error");
-                return messageNotification;
+            messageNotification.setMessage("Oops");
+            messageNotification.setMessageTitle("You Must Login to Add this course to cart");
+            messageNotification.setMessageType("error");
+            return messageNotification;
         }
 
         try {
             Student student = studentService.getStudent(user.getUserId());
             Course course = courseService.getCourse(courseId);
             Enrollment enrollment = new Enrollment();
+            if (enrollmentService.checkStudentCourseEnrollment(course, student)) {
+                messageNotification.setMessage("Oops");
+                messageNotification.setMessageTitle("This Course is actually Added to your Cart");
+                messageNotification.setMessageType("error");
+                return messageNotification;
+            }
             enrollment.setCourse(course);
             enrollment.setStatus(Status);
             enrollment.setEnrollDate(new Date());
             enrollment.setStudent(student);
             enrollmentService.addEnrollment(enrollment);
             messageNotification.setMessage("Successfully");
-             messageNotification.setMessageTitle("You Add this Course to  Cart");
-             messageNotification.setMessageType("success");
-             return messageNotification;
+            messageNotification.setMessageTitle("You Add this Course to  Cart");
+            messageNotification.setMessageType("success");
+            return messageNotification;
         } catch (Exception ex) {
-             messageNotification.setMessage("Oops");
-             messageNotification.setMessageTitle("You not Able to Add this Course to  Cart");
-             messageNotification.setMessageType("error");
-             return messageNotification;
+            messageNotification.setMessage("Oops");
+            messageNotification.setMessageTitle("You not Able to Add this Course to  Cart : " + ex.getMessage());
+            messageNotification.setMessageType("error");
+            return messageNotification;
         }
     }
+
     public Student getStudent() throws Exception {
         AppUserDetails principal = (AppUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = principal.getUser();

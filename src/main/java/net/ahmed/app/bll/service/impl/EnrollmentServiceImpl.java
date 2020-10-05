@@ -7,12 +7,13 @@ package net.ahmed.app.bll.service.impl;
 
 import java.util.List;
 import net.ahmed.app.bll.service.EnrollmentService;
+import net.ahmed.app.dal.entity.Course;
 import net.ahmed.app.dal.entity.Enrollment;
+import net.ahmed.app.dal.entity.Student;
 import net.ahmed.app.dal.repository.impl.EnrollmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 /**
  *
@@ -20,8 +21,10 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class EnrollmentServiceImpl implements EnrollmentService {
+
     @Autowired
     EnrollmentRepo enrollmentRepo;
+
     @Transactional
     @Override
     public Enrollment addEnrollment(Enrollment enrollment) throws Exception {
@@ -76,6 +79,12 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         } catch (Exception ex) {
             throw ex;
         }
+    }
+
+    @Transactional
+    @Override
+    public boolean checkStudentCourseEnrollment(Course course, Student student) throws Exception {
+        return enrollmentRepo.checkStudentCourseEnrollment(course, student);
     }
 
 }

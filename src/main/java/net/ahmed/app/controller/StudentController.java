@@ -6,10 +6,7 @@
 package net.ahmed.app.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import net.ahmed.app.bll.service.CourseService;
 import net.ahmed.app.bll.service.EnrollmentService;
@@ -17,10 +14,7 @@ import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.bll.service.StudentService;
 import net.ahmed.app.bll.service.UserService;
 import net.ahmed.app.dal.entity.Category;
-import net.ahmed.app.dal.entity.Course;
 import net.ahmed.app.dal.entity.Enrollment;
-import net.ahmed.app.dal.entity.Instructor;
-import net.ahmed.app.dal.entity.InstructorField;
 import net.ahmed.app.dal.entity.Student;
 import net.ahmed.app.dal.entity.User;
 import net.ahmed.app.security.AppUserDetails;
@@ -73,7 +67,6 @@ public class StudentController {
         } catch (Exception e) {
             List<Category> categories = null;
         }
-
     }
     
     @GetMapping("/student-profile")

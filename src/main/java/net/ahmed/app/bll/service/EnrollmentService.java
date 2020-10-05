@@ -6,7 +6,9 @@
 package net.ahmed.app.bll.service;
 
 import java.util.List;
+import net.ahmed.app.dal.entity.Course;
 import net.ahmed.app.dal.entity.Enrollment;
+import net.ahmed.app.dal.entity.Student;
 
 /**
  *
@@ -18,4 +20,5 @@ public interface EnrollmentService {
     public Enrollment editEnrollment(Enrollment enrollment)throws Exception;
     public void removeEnrollment(int enrollmentId)throws Exception;
     public Enrollment getEnrollment(Integer id)throws Exception;
+    public boolean checkStudentCourseEnrollment(Course course,Student student)throws Exception;
 }

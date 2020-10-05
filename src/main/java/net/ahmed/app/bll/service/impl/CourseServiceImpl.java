@@ -77,5 +77,16 @@ public class CourseServiceImpl implements CourseService {
             throw ex;
         }
     }
+    
+    @Transactional
+    @Override
+    public List<Course> getCoursesByName(String name) throws Exception {
+        try {
+            List<Course> courses = courseRepo.getCoursesByName(name);
+            return courses;
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 
 }

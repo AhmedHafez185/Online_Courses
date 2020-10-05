@@ -293,7 +293,7 @@
                                             $${course.price}
                                         </div>
                                         <a href="${pageContext.request.contextPath}/student/purchase" class="btn_1 full-width">Purchase</a>
-                                        <a href="${pageContext.request.contextPath}/student/addToCard/${course.id}" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
+                                        <button class="btn_1 full-width"  onclick="addCourseToCart('${pageContext.request.contextPath}/ajaxController/addToCard/','${course.id}')"> Add To Cart Now </button>
                                     </div>
                                 </aside>
                             </sec:authorize>  
