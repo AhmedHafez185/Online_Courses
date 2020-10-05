@@ -5,9 +5,13 @@
  */
 package net.ahmed.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Category;
+import net.ahmed.app.dal.entity.Content;
+import net.ahmed.app.dal.entity.Course;
+import net.ahmed.app.dal.entity.CourseOutlines;
 import net.ahmed.app.dal.entity.InstructorField;
 import net.ahmed.app.utils.RecordNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +47,30 @@ public class CategoryController {
         try {
             List<Category> categories = categoryService.findAllCategory();
             model.addAttribute("categories", categories);
+            model.addAttribute("courseDuration", coursePeriod(categories));
         } catch (Exception e) {
         }
 
+    }
+    private HashMap<Integer,String> coursePeriod(List<Category> categories){
+        HashMap<Integer,String> courseDuration = new HashMap<>();
+        for(Category cat : categories){
+        for(Course course : cat.getCourses()){
+          int nums =0;
+          for(CourseOutlines outline : course.getOutlines()){
+              for(Content content : outline.getContents()){
+                nums+=content.getPeriod();
+              }
+          }
+          courseDuration.put(course.getId(), convertSeconds(nums));
+         }
+        }
+        return courseDuration;
+    }
+     public String convertSeconds(Integer seconds){
+        int hours = seconds / 3600; 
+        int minutes = (seconds - hours * 3600)/60;
+        
+         return hours+"h "+minutes+"min";
     }
 }

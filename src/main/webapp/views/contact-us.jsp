@@ -30,18 +30,18 @@
                             <li>
                                 <i class="pe-7s-map-marker"></i>
                                 <h4>Address</h4>
-                                <span>PO Box 97845 Baker st. 567, Los Angeles<br>California - US.</span>
+                                <span>Al-Haram<br>Giza - Egypt.</span>
                             </li>
                             <li>
                                 <i class="pe-7s-mail-open-file"></i>
                                 <h4>Email address</h4>
-                                <span>admission@udema.com - info@udema.com<br><small>Monday to Friday 9am - 7pm</small></span>
+                                <span>ahmedalaahafez95@gmail.com<br><small>Sunday to Thursday 9am - 5pm</small></span>
 
                             </li>
                             <li>
                                 <i class="pe-7s-phone"></i>
                                 <h4>Contacts info</h4>
-                                <span>+ 61 (2) 8093 3402 + 61 (2) 8093 3402<br><small>Monday to Friday 9am - 7pm</small></span>
+                                <span>+ 01229514231<br><small>Sunday to Thursday 9am - 5pm</small></span>
                             </li>
                         </ul>
                     </div>

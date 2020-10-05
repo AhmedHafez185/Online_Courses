@@ -26,7 +26,7 @@ public class Enrollment  implements java.io.Serializable {
      private Course course;
      private Student student;
      private Date enrollDate;
-
+     private String Status;
     public Enrollment() {
     }
 
@@ -62,7 +62,7 @@ public class Enrollment  implements java.io.Serializable {
         this.course = course;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="student_id", nullable=false)
     public Student getStudent() {
         return this.student;
@@ -81,8 +81,16 @@ public class Enrollment  implements java.io.Serializable {
     public void setEnrollDate(Date enrollDate) {
         this.enrollDate = enrollDate;
     }
+    @Column(name="status", nullable=false)
+    public String getStatus() {
+        return Status;
+    }
 
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
 
+    
 
 
 }

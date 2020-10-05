@@ -59,7 +59,7 @@
                                         </ul>
                                     </div>
                                     <div id="accordion_lessons" role="tablist" class="add_bottom_45">
-                                        <c:forEach items="${outlines}" var="courseOutline">
+                                        <c:forEach items="${outlines}" var="courseOutline" varStatus="topicNo">
                                             <div class="card">
                                                 <div class="card-header" role="tab" id="heading${courseOutline.id}">
                                                     <h5 class="mb-0">
@@ -73,13 +73,30 @@
                                                         <div class="list_lessons">
                                                             <ul>
                                                                 <c:forEach items="${courseOutline.contents}" var="content" varStatus="lessonNo">
+                                                                    <c:if test="${topicNo.index == 0}">
+                                                                        <li>
+                                                                            <a href="${pageContext.request.contextPath}/resources/courses/${course.title}/lessons/${content.video}" class="video">${lessonNo.index+1}- ${content.title}</a><span >${content.duration}</span>
+                                                                            <span  onclick="toggleShowDetails(${content.id})" class="detailsLink">Details</span>
+                                                                            <p id="details${content.id}"  style="display:none;font-family: cursive;">${content.description}</p>
+                                                                        </li>
+                                                                    </c:if>
+                                                                   <c:if test="${topicNo.index != 0}">
                                                                     <li>
-
-                                                                        <a  href="${pageContext.request.contextPath}/resources/courses/${course.title}/lessons/${content.video}" class="video">${lessonNo.index+1}- ${content.title}</a><span >${content.duration}</span>
-                                                                        <span  onclick="toggleShowDetails(${content.id})" class="detailsLink">Details</span>
-                                                                        <p id="details${content.id}"  style="display:none;font-family: cursive;">${content.description}</p>
+                                                                        <sec:authorize access="isAuthenticated()">
+                                                                            <sec:authentication var="userDetails" property="principal"/>
+                                                                            <c:if test="${userDetails.user.userId == course.instructor.id}">
+                                                                                <a  href="${pageContext.request.contextPath}/resources/courses/${course.title}/lessons/${content.video}" class="video">${lessonNo.index+1}- ${content.title}</a><span >${content.duration}</span>
+                                                                                <span  onclick="toggleShowDetails(${content.id})" class="detailsLink">Details</span>
+                                                                                <p id="details${content.id}"  style="display:none;font-family: cursive;">${content.description}</p>
+                                                                            </c:if>
+                                                                        </sec:authorize>
+                                                                        <sec:authorize access="!isAuthenticated()">
+                                                                            <a href="" class="video">${lessonNo.index+1}- ${content.title}</a><span >${content.duration}</span>
+                                                                            <span  onclick="toggleShowDetails(${content.id})" class="detailsLink">Details</span>
+                                                                            <p id="details${content.id}"  style="display:none;font-family: cursive;">${content.description}</p>
+                                                                        </sec:authorize>
                                                                     </li> 
-
+                                                                   </c:if>
                                                                 </c:forEach>
                                                             </ul>
                                                         </div>
@@ -196,29 +213,29 @@
                                     </div>
                                     <hr>
                                     <sec:authorize access="hasAuthority('Student')">
-                                            <form action="${pageContext.request.contextPath}/ajaxController/addNewComment" method="post" id="form_review" name="reviewForm">
-                                                <div class="card">
-                                                    <div class="card-header" style="background-color: #92278f; font-weight: bold;color: #FFF;font-size: 17px">
-                                                        Your Feedback
-                                                    </div>
-                                                    <input type="hidden" id="courseId" value="${course.id}"/>
-                                                    <div class="card-body">
-                                                        <textarea type="textarea" name="user_comment" id="comment" placeholder="Give your comment" style="resize: none;height: 100px;margin-bottom: 15px;" class="form-control"></textarea> 
-                                                        <button id="save-comment" type="submit" class="btn btn-primary" style="float: right;width: 100px;">Save</button>
-                                                    </div>
+                                        <form action="${pageContext.request.contextPath}/ajaxController/addNewComment" method="post" id="form_review" name="reviewForm">
+                                            <div class="card">
+                                                <div class="card-header" style="background-color: #92278f; font-weight: bold;color: #FFF;font-size: 17px">
+                                                    Your Feedback
                                                 </div>
-                                            </form>
+                                                <input type="hidden" id="courseId" value="${course.id}"/>
+                                                <div class="card-body">
+                                                    <textarea type="textarea" name="user_comment" id="comment" placeholder="Give your comment" style="resize: none;height: 100px;margin-bottom: 15px;" class="form-control"></textarea> 
+                                                    <button id="save-comment" type="submit" class="btn btn-primary" style="float: right;width: 100px;">Save</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </sec:authorize>
                                     <sec:authorize access="!hasAuthority('Student')">
-                                                <div class="card">
-                                                    <div class="card-header" style="background-color: #92278f; font-weight: bold;color: #FFF;font-size: 17px">
-                                                        Your Feedback
-                                                    </div>
-                                                    <input type="hidden" id="courseId" value="${course.id}"/>
-                                                    <div class="card-body">
-                                                        <p style="font-size: large;font-family: fangsong;font-weight: 700">Sign in as a Student, That Only Student Can Give His Feedback </p>
-                                                    </div>
-                                                </div>
+                                        <div class="card">
+                                            <div class="card-header" style="background-color: #92278f; font-weight: bold;color: #FFF;font-size: 17px">
+                                                Your Feedback
+                                            </div>
+                                            <input type="hidden" id="courseId" value="${course.id}"/>
+                                            <div class="card-body">
+                                                <p style="font-size: large;font-family: fangsong;font-weight: 700">Sign in as a Student, That Only Student Can Give His Feedback </p>
+                                            </div>
+                                        </div>
                                     </sec:authorize>
                                     <div class="reviews-container">
                                         <!-- /review-box -->
@@ -275,8 +292,8 @@
                                         <div class="price">
                                             $${course.price}
                                         </div>
-                                        <a href="#0" class="btn_1 full-width">Purchase</a>
-                                        <a href="#0" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
+                                        <a href="${pageContext.request.contextPath}/student/purchase" class="btn_1 full-width">Purchase</a>
+                                        <a href="${pageContext.request.contextPath}/student/addToCard/${course.id}" class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
                                     </div>
                                 </aside>
                             </sec:authorize>  
@@ -305,20 +322,20 @@
         <!-- page -->
         <%@ include file="/resources/scripts.jsp" %>  
         <script type="text/javascript">
-            
-             $('document').ready(function () {
-                 if($("#comment").val() == ""){
-                     $('#save-comment').attr("disabled","disabled");
-                 }
-                 $("#comment").keyup(function(){
-                     if($("#comment").val().trim() !== ""){
-                     $('#save-comment').removeAttr("disabled");
-                    }else{
-                        $('#save-comment').attr("disabled","disabled");
+
+            $('document').ready(function () {
+                if ($("#comment").val() == "") {
+                    $('#save-comment').attr("disabled", "disabled");
+                }
+                $("#comment").keyup(function () {
+                    if ($("#comment").val().trim() !== "") {
+                        $('#save-comment').removeAttr("disabled");
+                    } else {
+                        $('#save-comment').attr("disabled", "disabled");
                     }
-                 });
+                });
                 $('#save-comment').click(function (event) {
-                      event.preventDefault();
+                    event.preventDefault();
                     $.post($("#form_review").attr("action"),
                             {
                                 comment: $("#comment").val(),
@@ -329,7 +346,7 @@
                                 $("#review_comment").text(data.comment);
                                 $("#commentAuthor").text(data.studentName);
                                 $("#review_date").text(data.date);
-                                $("#comment_image").attr("src","/Online_Courses/resources/images/users/"+data.picture);
+                                $("#comment_image").attr("src", "/Online_Courses/resources/images/users/" + data.picture);
                                 $("#newComment").removeAttr("style");
                             }
                     );

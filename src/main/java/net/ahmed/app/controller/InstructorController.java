@@ -118,6 +118,8 @@ public class InstructorController {
                     user.setEmail(instructor.getEmail());
                     user.setPassword(instructor.getPassword());
                     user.setUserType("Instructor");
+                    user.setFullName(instructor.getFirstName()+" "+instructor.getLastName());
+                    user.setPicture(multipartImage.getOriginalFilename());
                     user.setUserId(instructor.getId());
                     userService.addUser(user);
                     return "login";

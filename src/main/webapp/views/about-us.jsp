@@ -90,13 +90,13 @@
                             <div class="col-lg-6 wow" data-wow-offset="150">
                                 <figure class="block-reveal">
                                     <div class="block-horizzontal"></div>
-                                    <img src="http://via.placeholder.com/800x533/ccc/fff/course_1.jpg" class="img-fluid" alt="">
+                                    <img src="${pageContext.request.contextPath}/resources/images/foundationscomputerscience_378x212_0.jpg" class="img-fluid" alt="">
                                 </figure>
                             </div>
                             <div class="col-lg-5">
                                 <p>Lorem ipsum dolor sit amet, homero erroribus in cum. Cu eos <strong>scaevola probatus</strong>. Nam atqui intellegat ei, sed ex graece essent delectus. Autem consul eum ea. Duo cu fabulas nonumes contentiones, nihil voluptaria pro id. Has graeci deterruisset ad, est no primis detracto pertinax, at cum malis vitae facilisis.</p>
                                 <p>Dicam diceret ut ius, no epicuri dissentiet philosophia vix. Id usu zril tacimates neglegentur. Eam id legimus torquatos cotidieque, usu decore <strong>percipitur definitiones</strong> ex, nihil utinam recusabo mel no. Dolores reprehendunt no sit, quo cu viris theophrastus. Sit unum efficiendi cu.</p>
-                                <p><em>CEO Marc Schumaker</em></p>
+                                <p><em>CEO Ahmed Alaa</em></p>
                             </div>
                         </div>
                         <!--/row-->
@@ -115,36 +115,36 @@
                         <div class="item">
                             <a href="#0">
                                 <div class="title">
-                                    <h4>Julia Holmes<em>CEO</em></h4>
-                                </div><img src="http://via.placeholder.com/350x500/ccc/fff/1_carousel.jpg" alt="">
+                                    <h4>Ahmed Alaa<em>CEO</em></h4>
+                                </div><img src="${pageContext.request.contextPath}/resources/images/5004.jpg" alt="">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#0">
                                 <div class="title">
-                                    <h4>Lucas Smith<em>Marketing</em></h4>
-                                </div><img src="http://via.placeholder.com/350x500/ccc/fff/2_carousel.jpg" alt="">
+                                    <h4>Omar Ahmed<em>Marketing</em></h4>
+                                </div><img src="${pageContext.request.contextPath}/resources/images/0 DypQzAMdE9cudggX.jpg" alt="">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#0">
                                 <div class="title">
-                                    <h4>Paul Stephens<em>Business strategist</em></h4>
-                                </div><img src="http://via.placeholder.com/350x500/ccc/fff/3_carousel.jpg" alt="">
+                                    <h4>Aya Hafez<em>Business strategist</em></h4>
+                                </div><img src="${pageContext.request.contextPath}/resources/images/Computer-Science-BS.jpg" alt="">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#0">
                                 <div class="title">
-                                    <h4>Pablo Himenez<em>Customer Service</em></h4>
-                                </div><img src="http://via.placeholder.com/350x500/ccc/fff/4_carousel.jpg" alt="">
+                                    <h4>Zain Ahmed<em>Customer Service</em></h4>
+                                </div><img src="${pageContext.request.contextPath}/resources/images/foundationscomputerscience_378x212_0.jpg" alt="">
                             </a>
                         </div>
                         <div class="item">
                             <a href="#0">
                                 <div class="title">
-                                    <h4>Andrew Stuttgart<em>Admissions</em></h4>
-                                </div><img src="http://via.placeholder.com/350x500/ccc/fff/5_carousel.jpg" alt="">
+                                    <h4>Morad Ahmed<em>Admissions</em></h4>
+                                </div><img src="${pageContext.request.contextPath}/resources/images/1662_original.jpg" alt="">
                             </a>
                         </div>
                     </div>

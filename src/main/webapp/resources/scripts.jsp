@@ -6,3 +6,4 @@
 <script src="${pageContext.request.contextPath}/resources/js/pw_strenght.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/edited_js.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/sweetalert2.all.js"></script>

@@ -70,9 +70,8 @@
                                     <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
                                 </div>
                                 <ul>
-                                    <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                                    <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="course-detail.html">Enroll now</a></li>
+                                    <li><i class="icon_clock_alt"></i> ${courseDuration.get(course.id)}</li>
+                                    <li><button class="btn btn-info"  onclick="addCourseToCart('${pageContext.request.contextPath}/ajaxController/addToCard/','${course.id}')"> Add To Cart Now </button></li>
                                 </ul>
                             </div>
                         </div>
@@ -85,10 +84,6 @@
                         <!-- /item -->
                     </div>
                     <!-- /carousel -->
-                    <div class="container">
-                        <p class="btn_home_align"><a href="courses-grid.html" class="btn_1 rounded">View all courses</a></p>
-                    </div>
-                    <!-- /container -->
                     <hr>
                 </div>
                 <!-- /container -->
@@ -107,7 +102,7 @@
                                         <div class="block-horizzontal"></div>
                                         <img src="${pageContext.request.contextPath}/resources/images/category/${category.picture}" class="category-img img-fluid" alt="">
                                         <div class="info">
-                                            <small><i class="ti-layers"></i>15 Programmes</small>
+                                            <small><i class="ti-layers"></i>${categoryPrograms.get(category.id)} Programmes</small>
                                             <h3>${category.name}</h3>
                                         </div>
                                     </figure>
@@ -128,7 +123,7 @@
                                 <div class="box_1">
                                     <h3>Enjoy a great students community</h3>
                                     <p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue ut. </p>
-                                    <a href="#0" class="btn_1 rounded">Read more</a>
+                                    <a href="${pageContext.request.contextPath}/aboutUs" class="btn_1 rounded">Read more</a>
                                 </div>
                             </div>
                         </div>

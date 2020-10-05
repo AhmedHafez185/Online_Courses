@@ -26,38 +26,7 @@
                     </div>
                 </section>
                 <!--/hero_in-->
-                <div class="filters_listing sticky_horizontal">
-                    <div class="container">
-                        <ul class="clearfix">
-                            <li>
-                                <div class="switch-field">
-                                    <input type="radio" id="all" name="listing_filter" value="all" checked>
-                                    <label for="all">All</label>
-                                    <input type="radio" id="popular" name="listing_filter" value="popular">
-                                    <label for="popular">Popular</label>
-                                    <input type="radio" id="latest" name="listing_filter" value="latest">
-                                    <label for="latest">Latest</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="layout_view">
-                                    <a href="#0" class="active"><i class="icon-th"></i></a>
-                                    <a href="courses-list.html"><i class="icon-th-list"></i></a>
-                                </div>
-                            </li>
-                            <li>
-                                <select name="orderby" class="selectbox">
-                                    <option value="category">Category</option>
-                                    <option value="category 2">Literature</option>
-                                    <option value="category 3">Architecture</option>
-                                    <option value="category 4">Economy</option>
-                                </select>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /container -->
-                </div>
-                <!-- /filters -->
+               
 
                 <div class="container margin_60_35">
                     <div class="row">
@@ -79,9 +48,8 @@
                                     <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></div>
                                 </div>
                                 <ul>
-                                    <li><i class="icon_clock_alt"></i> 1h 30min</li>
-                                    <li><i class="icon_like"></i> 890</li>
-                                    <li><a href="${pageContext.request.contextPath}/views/course-details.jsp">Enroll now</a></li>
+                                    <li><i class="icon_clock_alt"></i> ${courseDuration.get(course.id)}</li>
+                                    <li><button class="btn btn-info"  onclick="addCourseToCart('${pageContext.request.contextPath}/ajaxController/addToCard/','${course.id}')"> Add To Cart Now </button></li>
                                 </ul>
                             </div>
                         </div>
@@ -89,7 +57,6 @@
                         </div>
                     </div>
                     <!-- /row -->
-                    <p class="text-center"><a href="#0" class="btn_1 rounded add_top_30">Load more</a></p>
                 <!-- /container -->
                 <div class="bg_color_1">
                     <div class="container margin_60_35">

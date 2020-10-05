@@ -7,7 +7,6 @@
     </div>
     <ul id="top_menu" style="margin-right: 90px;">
         <li><a href="#0" class="search-overlay-menu-btn">Search</a></li>
-            
             <sec:authorize access="!isAuthenticated()">
             <li><a href="${pageContext.request.contextPath}/views/login.jsp" class="login">Login</a></li>
             <li class="hidden_tablet"><a href="${pageContext.request.contextPath}/student/register" class="btn_1 rounded">Register</a></li>
@@ -25,7 +24,6 @@
     <nav id="menu" class="main-menu">
         <ul>
             <li><span><a href="${pageContext.request.contextPath}/index">Home</a></span>
-            <li><span><a href="${pageContext.request.contextPath}/redirect">Redirect</a></span>
             </li>
             <li><span><a href="#0">Courses</a></span>
                 <ul>
@@ -40,22 +38,30 @@
                     <li><a href="${pageContext.request.contextPath}/contactUs">Contact Us</a></li>
                 </ul>
             </li>
-            <li><span><a href="#0">Teach With Us</a></span>
-                <ul>
-                    <sec:authorize access="hasAuthority('Instructor')">
-                        <li><a href="${pageContext.request.contextPath}/instructor/myProfile">Profile</a></li>
-                        <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
-                        <li><a href="${pageContext.request.contextPath}/courses/addCourse">Add New Course</a></li>
-                        </sec:authorize>
-                        <sec:authorize access="!hasAuthority('Instructor')">
-                        <li><a href="${pageContext.request.contextPath}/instructor/register">Join US</a></li>
-                        </sec:authorize>
-                </ul>
-            </li>
-            <sec:authorize access="hasAuthority('Student')">
-                <li><span><a href="#0"><image src="https://via.placeholder.com/150" style="width: 28px;border-radius: 50%; margin-right: 5px;" />Ahmed</a></span>
+            <sec:authorize access="hasAuthority('Instructor')">
+                <sec:authentication var="userDetails" property="principal"/>
+                <li style="font-size: 18px;font-weight: 700;color:#FFF"><a style="color: #FFF" href="#0"><image src="${pageContext.request.contextPath}/resources/images/users/${userDetails.user.picture}" style="width: 28px;border-radius: 50%; margin-right: 5px;"/>${userDetails.user.fullName}</a>
                     <ul>
-                        <li><span><a href="${pageContext.request.contextPath}/student/student-profile">Profile</a></span></li>
+                        <li><a href="${pageContext.request.contextPath}/instructor/myProfile">Profile</a></li>
+                        <li><a href="${pageContext.request.contextPath}/courses/addCourse">Add New Course</a></li>
+                        <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+
+                    </ul>
+                </li>
+            </sec:authorize>
+            <sec:authorize access="!hasAuthority('Instructor')">
+                <li><span><a href="#0">Teach With Us</a></span>
+                    <ul>
+                           <li><a href="${pageContext.request.contextPath}/instructor/register">Join US</a></li>
+                    </ul>
+                </li>
+            
+            </sec:authorize>
+            <sec:authorize access="hasAuthority('Student')">
+                <sec:authentication var="userDetails" property="principal"/>
+                <li style="font-size: 18px;font-weight: 700;"><a style="color: #FFF" href="#0"><image src="${pageContext.request.contextPath}/resources/images/users/${userDetails.user.picture}" style="width: 28px;border-radius: 50%; margin-right: 5px;"/>${userDetails.user.fullName}</a>
+                    <ul>
+                        <li><a href="${pageContext.request.contextPath}/student/student-profile">Profile</a></li>
                         <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 
                     </ul>

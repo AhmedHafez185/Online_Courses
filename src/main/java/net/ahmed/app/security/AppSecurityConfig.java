@@ -15,11 +15,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
-
+    @Autowired
+    AuthenticationSuccessHandler authenticationSuccessHandler;
     @Autowired
     ServletContext servletContext;
     @Autowired
@@ -51,7 +53,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/index")
+                .formLogin().loginPage("/login")
+                .permitAll().successHandler(authenticationSuccessHandler)
+                .defaultSuccessUrl("/index")
                 .and()
                 .logout().logoutUrl("/logout")
                 .and()

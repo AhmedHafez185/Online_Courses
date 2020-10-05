@@ -146,6 +146,7 @@ public class Student implements java.io.Serializable {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
     public Set<Enrollment> getEnrollments() {
         return this.enrollments;
+        
     }
 
     public void setEnrollments(Set<Enrollment> enrollments) {

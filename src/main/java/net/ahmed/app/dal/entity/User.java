@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package net.ahmed.app.dal.entity;
-
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,14 +19,17 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "users", catalog = "online_courses_db", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User implements Serializable{
+public class User implements Serializable {
+
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Integer id;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private Integer id;
     private String email;
     private String password;
+    private String fullName;
+    private String picture;
     private Integer userId;
     private String userType;
 
@@ -49,9 +50,10 @@ public class User implements Serializable{
         this.userId = userId;
         this.userType = userType;
     }
+
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     public Integer getId() {
         return id;
     }
@@ -59,6 +61,7 @@ public class User implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
+
     @Column(name = "email", unique = true, nullable = false)
     public String getEmail() {
         return email;
@@ -67,6 +70,7 @@ public class User implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
@@ -75,6 +79,7 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
     @Column(name = "user_id", nullable = false)
     public Integer getUserId() {
         return userId;
@@ -83,6 +88,7 @@ public class User implements Serializable{
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
     @Column(name = "user_type", nullable = false)
     public String getUserType() {
         return userType;
@@ -91,5 +97,22 @@ public class User implements Serializable{
     public void setUserType(String userType) {
         this.userType = userType;
     }
+    @Column(name = "full_name", nullable = false)
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+    @Column(name = "picture", nullable = false)
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
     
+
 }

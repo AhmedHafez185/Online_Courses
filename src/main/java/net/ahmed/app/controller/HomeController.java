@@ -5,14 +5,19 @@
  */
 package net.ahmed.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import net.ahmed.app.bll.service.CourseService;
 import net.ahmed.app.bll.service.LookupsService;
 import net.ahmed.app.dal.entity.Category;
+import net.ahmed.app.dal.entity.Content;
 import net.ahmed.app.dal.entity.Course;
+import net.ahmed.app.dal.entity.CourseOutlines;
 import net.ahmed.app.utils.UploadUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,10 +72,13 @@ public class HomeController {
     @ModelAttribute
     public void getCategoroies(Model model) {
         try {
-            List<Category> categoroies = categoryService.findAllCategory();
+            List<Category> categories = categoryService.findAllCategory();
             List<Course> courses = courseService.findAllCourse();
-            model.addAttribute("categories",categoroies);
+            model.addAttribute("categories",categories);
             model.addAttribute("courses",courses);
+            model.addAttribute("categoryPrograms", categoryPrograms(categories));
+            model.addAttribute("courseDuration",coursePeriod(courses));
+            
         } catch (Exception ex) {
         }
     }
@@ -95,5 +103,35 @@ public class HomeController {
    public String studentProfile() {
 	   return "student-profile";
    }
-    
+    private HashMap<Integer,Integer> categoryPrograms(List<Category> categories){
+        HashMap<Integer,Integer> programs = new HashMap<>();
+        for(Category category : categories){
+          int nums =0;
+          for(Course course : category.getCourses()){
+              nums++;
+          }
+          programs.put(category.getId(), nums);
+        }
+        return programs;
+    }
+    private HashMap<Integer,String> coursePeriod(List<Course> courses){
+        HashMap<Integer,String> courseDuration = new HashMap<>();
+        for(Course course : courses){
+          int nums =0;
+          for(CourseOutlines outline : course.getOutlines()){
+              for(Content content : outline.getContents()){
+                nums+=content.getPeriod();
+              }
+          }
+          courseDuration.put(course.getId(), convertSeconds(nums));
+        }
+        return courseDuration;
+    }
+     public String convertSeconds(Integer seconds){
+        int hours = seconds / 3600; 
+        int minutes = (seconds - hours * 3600)/60;
+        
+         return hours+"h "+minutes+"min";
+    }
+   
 }
