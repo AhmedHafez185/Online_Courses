@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package net.ahmed.app.dal.repository;
-
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
